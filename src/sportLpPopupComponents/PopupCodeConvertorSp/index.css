@@ -18,6 +18,7 @@
 }
 
 .generate-btn-animation-active {
-    animation-name: generateBtnAnimation;
     animation-duration: 4s;
+    animation-name: generateBtnAnimation;
+    
 }
