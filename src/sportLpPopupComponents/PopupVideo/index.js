@@ -58,42 +58,7 @@ export default function PopupVideo(props) {
     setGenerateCode(true);
     setCodeOfComponent(`
     <!-- ***************** START VIDEO SECTION ***************** -->
-    <style>
-      #video-section${videoSectionId} .video-container {
-        text-align: center;
-      }
-      #video-section${videoSectionId} .video-container iframe {
-        width: 85%;
-        height: 220px;
-      }
-    
-      #video-section${videoSectionId} .video-section__title {
-        font-family: "Roboto Condensed", sans-serif;
-        color: #242323;
-        line-height: 32px;
-        padding: 14px 20px;
-      }
-    
-      @media (min-width: 760px) {
-        #video-section${videoSectionId} .video-container iframe {
-          height: 370px;
-        }
-    
-        #video-section${videoSectionId} .video-section__title {
-          line-height: 36px;
-        }
-      }
-    
-      @media (min-width: 1200px) {
-        #video-section${videoSectionId} .video-container iframe {
-          height: 441px;
-        }
-    
-        #video-section1 .video-section__title {
-          padding-left: 83px;
-        }
-      }
-    </style>
+    <link href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/video.css" rel="stylesheet">
     
     <div class="video-section" id="video-section${videoSectionId}">
       <h2 class="video-section__title">${videoTitle}</h2>
