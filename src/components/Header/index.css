@@ -1,0 +1,8 @@
+.header {
+  margin-bottom: 76px;
+}
+
+.header .MuiToolbar-regular {
+  min-height: 56px;
+  background: #0082c3;
+}
