@@ -8,8 +8,9 @@
 /* GLOBAL STYLES */
 .title {
   text-align: center;
+  text-transform: uppercase; 
   margin-bottom: 10px;
-  text-transform: uppercase;
+  
 }
 
 .card {
