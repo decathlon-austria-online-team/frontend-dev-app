@@ -438,12 +438,12 @@ ${pageWithOrWithoutMenu === "without-menu" ? (
                       <FormControlLabel
                         value="with-menu"
                         control={<Radio />}
-                        label="with"
+                        label="my sport page contains a menu"
                       />
                       <FormControlLabel
                         value="without-menu"
                         control={<Radio />}
-                        label="without"
+                        label="my sport page does not contain a menu"
                       />
                     </RadioGroup>
                   </FormControl>
