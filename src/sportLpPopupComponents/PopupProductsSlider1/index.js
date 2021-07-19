@@ -866,6 +866,9 @@ export default function PopupProductsSlider1(props) {
       .products-slider1__imgContainer {
         margin-bottom: 30px;
       }
+      .sportLp__section-title {
+        padding-left: 20px; 
+     }
     }
 
     .products-slider1__arrow {
