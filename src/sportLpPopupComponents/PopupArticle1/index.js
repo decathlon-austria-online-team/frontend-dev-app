@@ -90,7 +90,7 @@ export default function PopupArticle1(props) {
     setGenerateCode(true);
     setCodeOfComponent(`
     <!-- ***************** START DISPLAY ARTICLE1 ***************** -->
-    
+    <div class="sportpage__content--box">
     <link
       rel="stylesheet"
       href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/articles.css"
@@ -114,6 +114,7 @@ export default function PopupArticle1(props) {
         </p>
         <a href="${article1BtnLinkUrl}" class="article1__content--cta">${article1BtnText}</a>
       </div>
+     </div>
     </div>
     <div style="margin: 12px 0">&nbsp;</div>
     <!-- ***************** END DISPLAY ARTICLE1 ***************** -->
@@ -224,7 +225,7 @@ export default function PopupArticle1(props) {
                 </div>
               </div>
 
-              <div className="popupInputsContainer__wrapper">
+              <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
                   variant="contained"
                   color="primary"

@@ -4,5 +4,61 @@
 
 .header .MuiToolbar-regular {
   min-height: 56px;
-  background: #0082c3;
+  background: #004876;
+}
+
+.header__icons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__profile-icon {
+  margin-right: 10px;
+  display: block; 
+}
+
+.header__profile-icon:hover {
+  transform: scale(1.06);
+}
+
+.header__logout-btn {
+  color: #fff;
+  background-color: #004876; 
+  outline: none;
+  border: 1px solid #fff;
+  padding: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all .2s ease-out;
+}
+
+.header__logout-btn:hover {
+  color: #004876;
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+
+.settings-missing-animate {
+  animation-name: settings-missing-animate-icon;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes settings-missing-animate-icon {
+  0% {
+    transform: scale(1.1);
+    color: #E20C18;
+  }
+  50% {
+    transform: scale(0.9);
+    color: #fff;
+  }
+  100% {
+    transform: scale(1.1);
+    color: #E20C18;
+  }
 }

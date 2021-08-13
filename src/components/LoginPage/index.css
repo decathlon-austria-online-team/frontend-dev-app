@@ -1,0 +1,198 @@
+  .login {
+      padding: 20px;
+  }
+
+
+.login-decathlon-logo {
+  width: 125px;
+}
+
+  .login-content {
+    margin-top: 50px;
+  }
+
+  .login__right {
+    display: none;
+  }
+
+  .login-title {
+    text-align: left;
+    font-size: 40px !important;
+    color: #242323;
+    font-weight: 200 !important;
+  }
+
+
+  #login-dynamic-text-container {
+    position: relative;
+    min-height: 55px;
+    margin-bottom: 14px;
+  }
+  
+  #login-dynamic-text {
+    color: #0082C3;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 6px;
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    vertical-align: top;
+    white-space: pre;
+  }
+
+
+  .login-btn-container {
+    margin-top: 50px;
+  }
+
+  .login-btn-container button {
+    color: #fff;
+    background-color: #0082C3;
+  }
+  .login-btn-container button:hover {
+    color: #fff;
+    background-color: #004876;
+  }
+
+  .login-btn {
+    padding: 10px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 205px;
+  }
+
+  /* start transition group styles */
+/*
+.remove-btn {
+  margin-right: 0.5rem;
+}
+
+.item-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+*/
+/* end transition group styles */
+  
+.login__decathlon-email-message {
+  font-size: 12px;
+    padding: 5px;
+    color: gray;
+}
+
+@media(min-width: 1200px) {
+  .login {
+    margin-top: 40px;
+    padding: 40px;
+    max-width: 1400px;
+    overflow: hidden;
+  }
+
+
+
+  .login-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .login__left {
+    padding: 30px;
+  }
+
+  .login-title {
+    font-size: 50px !important;
+  }
+
+  .login__right {
+    display: block;
+   /* background-color: #FFEA28;*/
+   /* background-color: rgba(255, 234, 40, 0.1);*/
+   /* background-color: rgba(0, 130, 195, 0.1);*/
+  /*  background-color: rgba(0, 72, 118, 0.1);*/
+    background-color: #0082C3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    
+    
+  }
+  .login__right-img-container {
+   /* border: 1px solid red;*/
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 500px;
+    
+  }
+  .login__right-img-container img {
+    width: 390px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*border: 1px solid #eee;*/
+  }
+
+  #login-dynamic-text-container {
+    margin-bottom: 28px;
+  }
+
+  .login-btn-container {
+    margin-top: 70px;
+  }
+}
+
+
+@media(min-width: 1400px) {
+  .login-content {
+    margin-top: 60px;
+  }
+}
+
+@media(min-width: 1800px) {
+  .login-content {
+    margin-top: 120px;
+  }
+  .login__left {
+    padding: 75px;
+  }
+  .login-title {
+    font-size: 70px !important;
+  }
+  .login-decathlon-logo {
+    width: 175px;
+  }
+  #login-dynamic-text-container {
+    margin-bottom: 58px;
+  }
+  .login__right-img-container {
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 600px;
+  }
+  .login__right-img-container img {
+    width: 500px;
+  }
+}

@@ -53,6 +53,10 @@ export default function PopupOneshopSportpage(props) {
   };
 
   /* -----------------------------*****------------------------------- */
+  
+  // PAGE WITH OR WITHOUT A MENU
+  const [pageWithOrWithoutMenu, setPageWithOrWithoutMenu] = useState('yes');
+
   // HEADER PAGE
   const [oneshopSportpageH1Title, setOneshopSportpageH1Title] = useState("");
   const [oneshopSportpageSubtitle, setOneshopSportpageSubtitle] = useState("");
@@ -2519,7 +2523,7 @@ export default function PopupOneshopSportpage(props) {
   
 
     <!-- ***************** END ONESHOP SPORT PAGE  ***************** -->
-    
+
     `);
   };
 
@@ -2553,6 +2557,35 @@ export default function PopupOneshopSportpage(props) {
             <h2 id="transition-modal-title">{props.title}</h2>
             <p id="transition-modal-description">{props.text}</p>
             <div className="popupInputsContainer">
+            <div className="popupInputsContainer__sectionWrapper">
+            <FormControl component="fieldset">
+                 <FormLabel component="legend">
+                    Do you want to build a sports page that contains a menu?
+                   </FormLabel>
+
+                <RadioGroup
+                    aria-label="page_with_or_without_menu"
+                    name="page_with_or_without_menu"
+                    value={
+                     pageWithOrWithoutMenu
+                     }
+                    onChange={(e) =>
+                       setPageWithOrWithoutMenu(e.target.value)
+                    } 
+                        >
+                      <FormControlLabel
+                      value="yes"
+                      control={<Radio />}
+                      label="yes"
+                      />
+                      <FormControlLabel
+                        value="no"
+                       control={<Radio />}
+                       label="no"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+            </div>
               <div className="popupInputsContainer__sectionWrapper">
                 <p className="popupInputsContainer__titleOfInputsGroup">
                   Header page:
@@ -2588,4471 +2621,4474 @@ export default function PopupOneshopSportpage(props) {
                 </div>
               </div>
 
+                    {pageWithOrWithoutMenu === "yes" ? (
               <div className="popupInputsContainer__sectionWrapper">
-                <p className="popupInputsContainer__titleOfInputsGroup">
-                  Navigation Categories and Subcategories
-                </p>
+              <p className="popupInputsContainer__titleOfInputsGroup">
+                Navigation Categories and Subcategories
+              </p>
 
-                {/* -- TOP CATEGOTY 1 INPUTS -- */}
-                {amountOfCategories >= 1 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
+              {/* -- TOP CATEGOTY 1 INPUTS -- */}
+              {amountOfCategories >= 1 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory1({
+                          ...topLevelCategory1,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory1({
+                          ...topLevelCategory1,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory1.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory1({
+                            ...topLevelCategory1,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory1.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
                       <TextField
                         id="standard-basic"
-                        label="add top level category name"
+                        label="add subcategory 'Zu allen Produkten' link url"
                         style={{ width: "80%" }}
                         onChange={(e) =>
                           setTopLevelCategory1({
                             ...topLevelCategory1,
-                            topLevelCategoryName: e.target.value,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
                           })
                         }
                       />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory1 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
                       <TextField
                         id="standard-basic"
-                        label="add top level product image url"
+                        label="add subcategory name"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory1({
-                            ...topLevelCategory1,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory1.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory1({
-                              ...topLevelCategory1,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory1.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory1({
-                              ...topLevelCategory1,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory1 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory1 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory1 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory1 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        {/* yesss */}
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-
-                    {amountOfSubcategoriesTopCategory1 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        {/* yesss */}
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-
-                    {amountOfSubcategoriesTopCategory1 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        {/* yesss */}
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory1 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        {/* yesss */}
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory1 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        {/* yesss */}
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory1 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        {/* yesss */}
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory1 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        {/* yesss */}
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory1,
-                              setTopLevelCategory1
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory1 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory1(
-                            amountOfSubcategoriesTopCategory1 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory1}
-                        {amountOfSubcategoriesTopCategory1 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 2 INPUTS -- */}
-                {amountOfCategories >= 2 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
+                      />
                       <TextField
                         id="standard-basic"
-                        label="add top level category name"
+                        label="add subcategory link url"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory2({
-                            ...topLevelCategory2,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level product image url"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory2({
-                            ...topLevelCategory2,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory2.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory2({
-                              ...topLevelCategory2,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory2.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory2({
-                              ...topLevelCategory2,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory2 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory2 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory2,
-                              setTopLevelCategory2
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory2 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory2(
-                            amountOfSubcategoriesTopCategory2 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory2}
-                        {amountOfSubcategoriesTopCategory2 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 3 INPUTS -- */}
-                {amountOfCategories >= 3 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level category name"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory3({
-                            ...topLevelCategory3,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
                       />
                     </div>
-                    <div className="popupInputsContainer__wrapper">
+                  )}
+                  {amountOfSubcategoriesTopCategory1 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
                       <TextField
                         id="standard-basic"
-                        label="add top level product image url"
+                        label="add subcategory name"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory3({
-                            ...topLevelCategory3,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory3.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory3({
-                              ...topLevelCategory3,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory3.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory3({
-                              ...topLevelCategory3,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory3 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory3 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory3,
-                              setTopLevelCategory3
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory3 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory3(
-                            amountOfSubcategoriesTopCategory3 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory3}
-                        {amountOfSubcategoriesTopCategory3 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 4 INPUTS -- */}
-                {amountOfCategories >= 4 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
+                      />
                       <TextField
                         id="standard-basic"
-                        label="add top level category name"
+                        label="add subcategory link url"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory4({
-                            ...topLevelCategory4,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level product image url"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory4({
-                            ...topLevelCategory4,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory4.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory4({
-                              ...topLevelCategory4,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory4.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory4({
-                              ...topLevelCategory4,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory4 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory4 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory4,
-                              setTopLevelCategory4
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory4 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory4(
-                            amountOfSubcategoriesTopCategory4 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory4}
-                        {amountOfSubcategoriesTopCategory4 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 5 INPUTS -- */}
-                {amountOfCategories >= 5 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level category name"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory5({
-                            ...topLevelCategory5,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
                       />
                     </div>
-                    <div className="popupInputsContainer__wrapper">
+                  )}
+                  {amountOfSubcategoriesTopCategory1 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
                       <TextField
                         id="standard-basic"
-                        label="add top level product image url"
+                        label="add subcategory name"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory5({
-                            ...topLevelCategory5,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory5.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory5({
-                              ...topLevelCategory5,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory5.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory5({
-                              ...topLevelCategory5,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory5 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory5 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory5,
-                              setTopLevelCategory5
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory5 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory5(
-                            amountOfSubcategoriesTopCategory5 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory5}
-                        {amountOfSubcategoriesTopCategory5 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 6 INPUTS -- */}
-                {amountOfCategories >= 6 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
+                      />
                       <TextField
                         id="standard-basic"
-                        label="add top level category name"
+                        label="add subcategory link url"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory6({
-                            ...topLevelCategory6,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level product image url"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory6({
-                            ...topLevelCategory6,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory6.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory6({
-                              ...topLevelCategory6,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory6.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory6({
-                              ...topLevelCategory6,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory6 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory6 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory6,
-                              setTopLevelCategory6
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory6 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory6(
-                            amountOfSubcategoriesTopCategory6 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory6}
-                        {amountOfSubcategoriesTopCategory6 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 7 INPUTS -- */}
-                {amountOfCategories >= 7 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level category name"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory7({
-                            ...topLevelCategory7,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
                       />
                     </div>
-                    <div className="popupInputsContainer__wrapper">
+                  )}
+                  {amountOfSubcategoriesTopCategory1 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      {/* yesss */}
                       <TextField
                         id="standard-basic"
-                        label="add top level product image url"
+                        label="add subcategory name"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory7({
-                            ...topLevelCategory7,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory7.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory7({
-                              ...topLevelCategory7,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory7.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory7({
-                              ...topLevelCategory7,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory7 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory7 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory7,
-                              setTopLevelCategory7
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory7 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory7(
-                            amountOfSubcategoriesTopCategory7 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory7}
-                        {amountOfSubcategoriesTopCategory7 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 8 INPUTS -- */}
-
-                {amountOfCategories >= 8 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
+                      />
                       <TextField
                         id="standard-basic"
-                        label="add top level category name"
+                        label="add subcategory link url"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory8({
-                            ...topLevelCategory8,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level product image url"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory8({
-                            ...topLevelCategory8,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory8.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory8({
-                              ...topLevelCategory8,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory8.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory8({
-                              ...topLevelCategory8,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory8 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory8 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory8,
-                              setTopLevelCategory8
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory8 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory8(
-                            amountOfSubcategoriesTopCategory8 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory8}
-                        {amountOfSubcategoriesTopCategory8 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 9 INPUTS -- */}
-                {amountOfCategories >= 9 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level category name"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory9({
-                            ...topLevelCategory9,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
                       />
                     </div>
-                    <div className="popupInputsContainer__wrapper">
+                  )}
+
+                  {amountOfSubcategoriesTopCategory1 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      {/* yesss */}
                       <TextField
                         id="standard-basic"
-                        label="add top level product image url"
+                        label="add subcategory name"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory9({
-                            ...topLevelCategory9,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory9.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory9({
-                              ...topLevelCategory9,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory9.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory9({
-                              ...topLevelCategory9,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory9 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory9 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory9,
-                              setTopLevelCategory9
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory9 >= 10 ? true : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory9(
-                            amountOfSubcategoriesTopCategory9 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory9}
-                        {amountOfSubcategoriesTopCategory9 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
-                    </div>
-                  </div>
-                )}
-
-                {/* -- TOP CATEGOTY 10 INPUTS -- */}
-
-                {amountOfCategories >= 10 && (
-                  <div
-                    className="popupInputsContainer__sectionWrapper"
-                    style={{ border: "1px solid #f50057", padding: "3px" }}
-                  >
-                    <div className="popupInputsContainer__wrapper">
+                      />
                       <TextField
                         id="standard-basic"
-                        label="add top level category name"
+                        label="add subcategory link url"
                         style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory10({
-                            ...topLevelCategory10,
-                            topLevelCategoryName: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <TextField
-                        id="standard-basic"
-                        label="add top level product image url"
-                        style={{ width: "80%" }}
-                        onChange={(e) =>
-                          setTopLevelCategory10({
-                            ...topLevelCategory10,
-                            topLevelCategoryProductImgUrl: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="popupInputsContainer__wrapper">
-                      <FormControl component="fieldset">
-                        <FormLabel component="legend">
-                          Do you want to display as the last subcategory: "Zu
-                          allen Produkten" ?
-                        </FormLabel>
-
-                        <RadioGroup
-                          aria-label="last_all_product_subcategory"
-                          name="last_all_product_subcategory"
-                          value={
-                            topLevelCategory10.toAllProductsAsSubcategoryDisplayBool
-                          }
-                          onChange={(e) =>
-                            setTopLevelCategory10({
-                              ...topLevelCategory10,
-                              toAllProductsAsSubcategoryDisplayBool:
-                                e.target.value,
-                            })
-                          }
-                        >
-                          <FormControlLabel
-                            value="yes"
-                            control={<Radio />}
-                            label="yes"
-                          />
-                          <FormControlLabel
-                            value="no"
-                            control={<Radio />}
-                            label="no"
-                          />
-                        </RadioGroup>
-                      </FormControl>
-                      {topLevelCategory10.toAllProductsAsSubcategoryDisplayBool ===
-                        "yes" && (
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory 'Zu allen Produkten' link url"
-                          style={{ width: "80%" }}
-                          onChange={(e) =>
-                            setTopLevelCategory10({
-                              ...topLevelCategory10,
-                              toAllProductsAsSubcategoryUrl: e.target.value,
-                            })
-                          }
-                        />
-                      )}
-                    </div>
-                    {amountOfSubcategoriesTopCategory10 >= 1 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              0,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              0,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 2 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              1,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              1,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 3 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              2,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              2,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 4 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              3,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              3,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 5 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              4,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              4,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 6 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              5,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              5,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 7 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              6,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              6,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 8 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              7,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              7,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 9 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              8,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              8,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    {amountOfSubcategoriesTopCategory10 >= 10 && (
-                      <div
-                        className="popupInputsContainer__wrapper"
-                        style={{ border: "1px solid green", padding: "3px" }}
-                      >
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory name"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryName(
-                              e,
-                              9,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                        <TextField
-                          id="standard-basic"
-                          label="add subcategory link url"
-                          style={{ width: "80%" }}
-                          onChange={(e, sub, top, setTop) =>
-                            handleOnChangeSubCategoryUrl(
-                              e,
-                              9,
-                              topLevelCategory10,
-                              setTopLevelCategory10
-                            )
-                          }
-                        />
-                      </div>
-                    )}
-                    <div className="popupInputsContainer__wrapper">
-                      <button
-                        disabled={
-                          amountOfSubcategoriesTopCategory10 >= 10
-                            ? true
-                            : false
-                        }
-                        onClick={() =>
-                          setAmountOfSubcategoriesTopCategory10(
-                            amountOfSubcategoriesTopCategory10 + 1
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory1,
+                            setTopLevelCategory1
                           )
                         }
-                      >
-                        add subcategory +
-                      </button>
-                      <p>
-                        you already defined {amountOfSubcategoriesTopCategory10}
-                        {amountOfSubcategoriesTopCategory10 <= 1
-                          ? " subcategory"
-                          : " subcategories"}
-                      </p>
-                      <small
-                        style={{
-                          background: "green",
-                          color: "#fff",
-                          padding: "3px",
-                        }}
-                      >
-                        max 10 subcategories!
-                      </small>
+                      />
                     </div>
-                  </div>
-                )}
+                  )}
 
-                <div className="popupInputsContainer__wrapper">
-                  <button
-                    style={{ padding: "4px 8px", cursor: "pointer" }}
-                    disabled={amountOfCategories >= 10 ? true : false}
-                    onClick={() =>
-                      setAmountOfCategories(amountOfCategories + 1)
-                    }
-                  >
-                    {" "}
-                    Add new top level category +
-                  </button>
-                  <p>
-                    you already defined {amountOfCategories} top level{" "}
-                    {amountOfCategories <= 1 ? "category" : "categories"}
-                  </p>
-                  <small
-                    style={{
-                      background: "yellow",
-                      padding: "3px",
-                      color: "black",
-                    }}
-                  >
-                    max 10 top level categories!
-                  </small>
+                  {amountOfSubcategoriesTopCategory1 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      {/* yesss */}
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory1 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      {/* yesss */}
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory1 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      {/* yesss */}
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory1 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      {/* yesss */}
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory1 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      {/* yesss */}
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory1,
+                            setTopLevelCategory1
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory1 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory1(
+                          amountOfSubcategoriesTopCategory1 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory1}
+                      {amountOfSubcategoriesTopCategory1 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
                 </div>
-                {/* ----------------------------------------------- */}
+              )}
+
+              {/* -- TOP CATEGOTY 2 INPUTS -- */}
+              {amountOfCategories >= 2 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory2({
+                          ...topLevelCategory2,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory2({
+                          ...topLevelCategory2,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory2.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory2({
+                            ...topLevelCategory2,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory2.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory2({
+                            ...topLevelCategory2,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory2 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory2 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory2,
+                            setTopLevelCategory2
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory2 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory2(
+                          amountOfSubcategoriesTopCategory2 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory2}
+                      {amountOfSubcategoriesTopCategory2 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 3 INPUTS -- */}
+              {amountOfCategories >= 3 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory3({
+                          ...topLevelCategory3,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory3({
+                          ...topLevelCategory3,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory3.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory3({
+                            ...topLevelCategory3,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory3.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory3({
+                            ...topLevelCategory3,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory3 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory3 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory3,
+                            setTopLevelCategory3
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory3 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory3(
+                          amountOfSubcategoriesTopCategory3 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory3}
+                      {amountOfSubcategoriesTopCategory3 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 4 INPUTS -- */}
+              {amountOfCategories >= 4 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory4({
+                          ...topLevelCategory4,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory4({
+                          ...topLevelCategory4,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory4.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory4({
+                            ...topLevelCategory4,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory4.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory4({
+                            ...topLevelCategory4,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory4 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory4 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory4,
+                            setTopLevelCategory4
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory4 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory4(
+                          amountOfSubcategoriesTopCategory4 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory4}
+                      {amountOfSubcategoriesTopCategory4 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 5 INPUTS -- */}
+              {amountOfCategories >= 5 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory5({
+                          ...topLevelCategory5,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory5({
+                          ...topLevelCategory5,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory5.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory5({
+                            ...topLevelCategory5,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory5.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory5({
+                            ...topLevelCategory5,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory5 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory5 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory5,
+                            setTopLevelCategory5
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory5 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory5(
+                          amountOfSubcategoriesTopCategory5 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory5}
+                      {amountOfSubcategoriesTopCategory5 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 6 INPUTS -- */}
+              {amountOfCategories >= 6 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory6({
+                          ...topLevelCategory6,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory6({
+                          ...topLevelCategory6,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory6.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory6({
+                            ...topLevelCategory6,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory6.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory6({
+                            ...topLevelCategory6,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory6 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory6 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory6,
+                            setTopLevelCategory6
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory6 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory6(
+                          amountOfSubcategoriesTopCategory6 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory6}
+                      {amountOfSubcategoriesTopCategory6 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 7 INPUTS -- */}
+              {amountOfCategories >= 7 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory7({
+                          ...topLevelCategory7,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory7({
+                          ...topLevelCategory7,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory7.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory7({
+                            ...topLevelCategory7,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory7.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory7({
+                            ...topLevelCategory7,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory7 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory7 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory7,
+                            setTopLevelCategory7
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory7 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory7(
+                          amountOfSubcategoriesTopCategory7 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory7}
+                      {amountOfSubcategoriesTopCategory7 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 8 INPUTS -- */}
+
+              {amountOfCategories >= 8 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory8({
+                          ...topLevelCategory8,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory8({
+                          ...topLevelCategory8,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory8.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory8({
+                            ...topLevelCategory8,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory8.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory8({
+                            ...topLevelCategory8,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory8 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory8 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory8,
+                            setTopLevelCategory8
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory8 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory8(
+                          amountOfSubcategoriesTopCategory8 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory8}
+                      {amountOfSubcategoriesTopCategory8 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 9 INPUTS -- */}
+              {amountOfCategories >= 9 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory9({
+                          ...topLevelCategory9,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory9({
+                          ...topLevelCategory9,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory9.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory9({
+                            ...topLevelCategory9,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory9.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory9({
+                            ...topLevelCategory9,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory9 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory9 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory9,
+                            setTopLevelCategory9
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory9 >= 10 ? true : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory9(
+                          amountOfSubcategoriesTopCategory9 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory9}
+                      {amountOfSubcategoriesTopCategory9 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              {/* -- TOP CATEGOTY 10 INPUTS -- */}
+
+              {amountOfCategories >= 10 && (
+                <div
+                  className="popupInputsContainer__sectionWrapper"
+                  style={{ border: "1px solid #f50057", padding: "3px" }}
+                >
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level category name"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory10({
+                          ...topLevelCategory10,
+                          topLevelCategoryName: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <TextField
+                      id="standard-basic"
+                      label="add top level product image url"
+                      style={{ width: "80%" }}
+                      onChange={(e) =>
+                        setTopLevelCategory10({
+                          ...topLevelCategory10,
+                          topLevelCategoryProductImgUrl: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                  <div className="popupInputsContainer__wrapper">
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Do you want to display as the last subcategory: "Zu
+                        allen Produkten" ?
+                      </FormLabel>
+
+                      <RadioGroup
+                        aria-label="last_all_product_subcategory"
+                        name="last_all_product_subcategory"
+                        value={
+                          topLevelCategory10.toAllProductsAsSubcategoryDisplayBool
+                        }
+                        onChange={(e) =>
+                          setTopLevelCategory10({
+                            ...topLevelCategory10,
+                            toAllProductsAsSubcategoryDisplayBool:
+                              e.target.value,
+                          })
+                        }
+                      >
+                        <FormControlLabel
+                          value="yes"
+                          control={<Radio />}
+                          label="yes"
+                        />
+                        <FormControlLabel
+                          value="no"
+                          control={<Radio />}
+                          label="no"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    {topLevelCategory10.toAllProductsAsSubcategoryDisplayBool ===
+                      "yes" && (
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory 'Zu allen Produkten' link url"
+                        style={{ width: "80%" }}
+                        onChange={(e) =>
+                          setTopLevelCategory10({
+                            ...topLevelCategory10,
+                            toAllProductsAsSubcategoryUrl: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+                  </div>
+                  {amountOfSubcategoriesTopCategory10 >= 1 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            0,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            0,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 2 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            1,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            1,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 3 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            2,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            2,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 4 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            3,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            3,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 5 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            4,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            4,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 6 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            5,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            5,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 7 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            6,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            6,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 8 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            7,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            7,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 9 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            8,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            8,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  {amountOfSubcategoriesTopCategory10 >= 10 && (
+                    <div
+                      className="popupInputsContainer__wrapper"
+                      style={{ border: "1px solid green", padding: "3px" }}
+                    >
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory name"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryName(
+                            e,
+                            9,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                      <TextField
+                        id="standard-basic"
+                        label="add subcategory link url"
+                        style={{ width: "80%" }}
+                        onChange={(e, sub, top, setTop) =>
+                          handleOnChangeSubCategoryUrl(
+                            e,
+                            9,
+                            topLevelCategory10,
+                            setTopLevelCategory10
+                          )
+                        }
+                      />
+                    </div>
+                  )}
+                  <div className="popupInputsContainer__wrapper">
+                    <button
+                      disabled={
+                        amountOfSubcategoriesTopCategory10 >= 10
+                          ? true
+                          : false
+                      }
+                      onClick={() =>
+                        setAmountOfSubcategoriesTopCategory10(
+                          amountOfSubcategoriesTopCategory10 + 1
+                        )
+                      }
+                    >
+                      add subcategory +
+                    </button>
+                    <p>
+                      you already defined {amountOfSubcategoriesTopCategory10}
+                      {amountOfSubcategoriesTopCategory10 <= 1
+                        ? " subcategory"
+                        : " subcategories"}
+                    </p>
+                    <small
+                      style={{
+                        background: "green",
+                        color: "#fff",
+                        padding: "3px",
+                      }}
+                    >
+                      max 10 subcategories!
+                    </small>
+                  </div>
+                </div>
+              )}
+
+              <div className="popupInputsContainer__wrapper">
+                <button
+                  style={{ padding: "4px 8px", cursor: "pointer" }}
+                  disabled={amountOfCategories >= 10 ? true : false}
+                  onClick={() =>
+                    setAmountOfCategories(amountOfCategories + 1)
+                  }
+                >
+                  {" "}
+                  Add new top level category +
+                </button>
+                <p>
+                  you already defined {amountOfCategories} top level{" "}
+                  {amountOfCategories <= 1 ? "category" : "categories"}
+                </p>
+                <small
+                  style={{
+                    background: "yellow",
+                    padding: "3px",
+                    color: "black",
+                  }}
+                >
+                  max 10 top level categories!
+                </small>
               </div>
+              {/* ----------------------------------------------- */}
+            </div>
+             ): null}
+
 
               <div className="popupInputsContainer__wrapper">
                 <Button

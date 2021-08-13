@@ -85,6 +85,7 @@ export default function PopupBanner1(props) {
     setGenerateCode(true);
     setCodeOfComponent(`
     <!-- ***************** START DISPLAY BANNER1 ***************** -->
+    <div class="sportpage__content--box">
     <div style="margin: 15px 0">&nbsp;</div>
     <link
       rel="stylesheet"
@@ -109,6 +110,7 @@ export default function PopupBanner1(props) {
         </div>
       </div>
       <div class="banner1__right-side banner1__right-side${categorySectionIdNumber}"></div>
+     </div>
     </div>
     <div style="margin: 15px 0">&nbsp;</div>
     <!-- ***************** END DISPLAY BANNER1 ***************** -->
@@ -209,7 +211,7 @@ export default function PopupBanner1(props) {
                 </div>
               </div>
 
-              <div className="popupInputsContainer__wrapper">
+              <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
                   variant="contained"
                   color="primary"

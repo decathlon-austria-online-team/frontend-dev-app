@@ -1,0 +1,44 @@
+.sportLPV3 .MuiImageListItemBar-subtitle {
+    line-height: 2;
+   }
+
+   .sportLPV3__content-title {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       
+   }
+
+   .sportLPV3__content-title button {
+    background-color: #0082C3;
+    color: #fff;
+   }
+
+   .sportLPV3__content-title button:hover {
+    background-color: #004876;
+   }
+
+
+   @media(min-width: 1200px) {
+    .sportLPV3__content {
+        padding: 10px 20px;
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        /*border: 1px solid red;*/
+    }
+    .sportLPV3__components {
+        width: 42%;
+      /* width: 0;*/
+       /* border: 1px solid green;*/
+       transition: width 500ms ease-out;
+    }
+    .sportLPV3__code-editor {
+        width: 55%;
+       /* border: 1px solid yellow;*/
+      /* width: 100%;*/
+      transition: width 500ms ease-out;
+    }
+   }
+
+  

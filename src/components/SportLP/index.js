@@ -17,7 +17,7 @@ import codeImage from "../../img/sport-page-code-convertor.jpg";
 import "./index.css";
 import PopupModalUseComponent from "../PopupModalUseComponent";
 import Popup2Categories from "../../sportLpPopupComponents/Popup2Categories";
-import Popup3Categories from "../../sportLpPopupComponents/Popup3Categories";
+import Popup3Categories from "../../sportLpPopupComponents/Popup3Categories"; 
 import Popup4Categories from "../../sportLpPopupComponents/Popup4Categories";
 import PopupBanner1 from "../../sportLpPopupComponents/PopupBanner1";
 import PopupArticle1 from "../../sportLpPopupComponents/PopupArticle1";
@@ -76,8 +76,12 @@ const SportLP = () => {
   ] = useState(false);
 
   return (
-    <div className="sprortLP">
+    <div className="sprortLP page">
       <h2 className="title"> Sport page components</h2>
+      <div className="sprortLP__base-top-container">
+        <div className="sprortLP__base-top">dfdf</div>
+        <div className="sprortLP__base-top">dfdf</div>
+      </div>
       <div className="cards">
         <div className="card">
           <ImgMediaCard
@@ -197,7 +201,7 @@ const SportLP = () => {
         open={openBanner1Component}
         handleClose={() => setOpenBanner1Component(false)}
       />
-      <PopupArticle1
+      <PopupArticle1 
         imgUrl={screenshotArticle1}
         open={openArticle1Component}
         handleClose={() => setOpenArticle1Component(false)}

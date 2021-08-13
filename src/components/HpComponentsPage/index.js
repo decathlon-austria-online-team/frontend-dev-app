@@ -10,7 +10,7 @@ import PopupHpMainBanner from "../../hpPopupComponents/PopupHpMainBanner";
 const HpComponentsPage = () => {
   const [open2HpBannerComponent, setOpen2HpBannerComponent] = useState(false);
   return (
-    <div className="hpComponentsPage">
+    <div className="hpComponentsPage page">
       <h2 className="title"> Home Page Components</h2>
       <div className="cards">
         <div className="card">

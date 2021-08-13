@@ -4,10 +4,25 @@
 
 .home__img-container {
   text-align: center;
-  margin-top: 134px;
+  margin-top: 54px;
 }
 
 .home__img-container img {
   width: 44%;
   height: auto;
+}
+
+.home__container {
+  text-align: center;
+}
+
+
+/* home page settings missing */
+.home-settings-missing-message {
+  text-align: center;
+}
+
+.home-settings-missing-message__btn-container button {
+  min-width: 250px;
+  margin-top: 20px;
 }

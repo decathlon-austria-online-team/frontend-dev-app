@@ -58,6 +58,7 @@ export default function PopupVideo(props) {
     setGenerateCode(true);
     setCodeOfComponent(`
     <!-- ***************** START VIDEO SECTION ***************** -->
+    <div class="sportpage__content--box">
     <link href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/video.css" rel="stylesheet">
     
     <div class="video-section" id="video-section${videoSectionId}">
@@ -70,8 +71,8 @@ export default function PopupVideo(props) {
         ></iframe>
       </div>
     </div>
-    <div style="margin: 12px 0">&nbsp;</div>
-    
+     <div style="margin: 12px 0">&nbsp;</div>
+    </div>
     <!-- ***************** END VIDEO SECTION ***************** -->
     `);
   };
@@ -136,7 +137,7 @@ export default function PopupVideo(props) {
                 </div>
               </div>
 
-              <div className="popupInputsContainer__wrapper">
+              <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
                   variant="contained"
                   color="primary"

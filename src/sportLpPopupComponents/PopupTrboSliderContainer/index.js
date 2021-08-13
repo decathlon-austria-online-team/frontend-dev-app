@@ -55,6 +55,7 @@ export default function PopupTrboSliderContainer(props) {
     setGenerateCode(true);
     setCodeOfComponent(`
 <!-- ***************** START TRBO SLIDER CONTAINER WITH LOADING ***************** -->
+<div class="sportpage__content--box">
 <div id="${trboSliderContainerId}">
   <div id="${trboSliderContainerId}-loading">
     <p class="${trboSliderContainerId}-loading-text">Produkte werden geladen</p>
@@ -161,7 +162,7 @@ export default function PopupTrboSliderContainer(props) {
     clearInterval(loadingInterval);
   }
 </script>
-
+</div>
 <!-- ***************** END TRBO SLIDER CONTAINER WITH LOADING ***************** -->
     `);
   };
@@ -207,7 +208,7 @@ export default function PopupTrboSliderContainer(props) {
                 </div>
               </div>
 
-              <div className="popupInputsContainer__wrapper">
+              <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
                   variant="contained"
                   color="primary"

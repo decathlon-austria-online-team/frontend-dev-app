@@ -2,19 +2,53 @@ import React from "react";
 import "./index.css";
 import HpComponentsPage from "../HpComponentsPage";
 import MainIllu from "../../img/main-illu.svg";
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 
-const Home = () => {
+
+const Home = (props) => {
+  console.log('userHasAllDataInSheetBool home: ', props.userHasAllDataInSheetBool);
   return (
-    <div className="home">
-      {/*
-            <div className="home__imgContainer">
-        <img src="https://www.decathlon.ca/themes/decashop_v5/assets/img/logo-decathlon-blue.svg" />
-      </div>
-      <HpComponentsPage />
-      */}
-      <div className="home__img-container">
-        <img alt="" src={MainIllu} />
-      </div>
+    <div className="home page">
+      { 
+        props.userHasAllDataInSheetBool ? (
+          
+         <div className="home__container">
+
+           <lord-icon
+            src="https://cdn.lordicon.com/wrprwmwt.json"
+            trigger="loop"
+            colors="primary:#0082c3,secondary:#ffea28"
+            style={{width: '250px', height: '250px'}}
+            >
+          </lord-icon>
+          <Typography variant="h4" component="h4" gutterBottom className="title">
+                All set, you can start to work!
+            </Typography>
+         </div>
+        ) : (
+          <div className="home-settings-missing-message">
+              <lord-icon
+                  src="https://cdn.lordicon.com/tdrtiskw.json"
+                  trigger="loop"
+                  colors="primary:#0082c3,secondary:#ffea28"
+                  style={{width: '250px', height: '250px'}}
+                  >
+              </lord-icon>
+              <Typography variant="h4" component="h4" gutterBottom className="title">
+              To use the app please complete the settings
+            </Typography>
+            <div className="primary-button-container home-settings-missing-message__btn-container">
+            <Link style={{color: '#fff', textDecoration: 'none'}} to="/settings">
+              <Button variant="contained">Set up now</Button>
+            </Link>
+            </div>
+            </div>
+        )
+      }
+
+    
     </div>
   );
 };

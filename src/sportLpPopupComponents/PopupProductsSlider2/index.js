@@ -194,15 +194,12 @@ export default function PopupProductsSlider2(props) {
     <!-- ***************** START DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
 
     
-    
+    <div class="sportpage__content--box">
     <link
       rel="stylesheet"
       href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider2.css"
     />
-
-
-    
-     
+  
         <div class="products-slider2">
           <!-- Swiper -->
           <div class="swiper-container swiper-container__products-slider2 swiper-container__products-slider2__${sliderId}">
@@ -234,7 +231,7 @@ export default function PopupProductsSlider2(props) {
                           <div
                             class="products-slider2__img-price-label--deci-container"
                           >
-                            <span>€</span>
+                            <span>${props.userDataObjFromSheet.currencySymbol}</span>
                             <span>${slider2Product1PriceDecimal}</span>
                           </div>
                         </div>
@@ -300,7 +297,7 @@ export default function PopupProductsSlider2(props) {
                           <div
                             class="products-slider2__img-price-label--deci-container"
                           >
-                            <span>€</span>
+                            <span>${props.userDataObjFromSheet.currencySymbol}</span>
                             <span>${slider2Product2PriceDecimal}</span>
                           </div>
                         </div>
@@ -361,6 +358,7 @@ export default function PopupProductsSlider2(props) {
               loop: true,
             });
           </script>
+         </div>
         </div>
         <div style="margin: 12px 0"> </div>
         <!-- ***************** END DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
@@ -378,6 +376,8 @@ export default function PopupProductsSlider2(props) {
       setShowSuccessCopied(false);
     }, 2000);
   };
+
+  //console.log('slider2 userDataObjFromSheet: ', props.userDataObjFromSheet);
   return (
     <div>
       <Modal
@@ -425,7 +425,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (integer number - without € symbol and cents)"
+                    label="price (integer number - without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider2Product1PriceIntegerHandleOnChange}
                   />
@@ -434,7 +434,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add cents to price (without € symbol)"
+                    label="cents to price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider2Product1PriceDecimalHandleOnChange}
                   />
@@ -469,7 +469,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product image src"
+                    label="product image src"
                     style={{ width: "80%" }}
                     onChange={slider2Product1ImageSrcHandleOnChange}
                   />
@@ -478,7 +478,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product image alt"
+                    label="product image alt"
                     style={{ width: "80%" }}
                     onChange={slider2Product1ImageAltHandleOnChange}
                   />
@@ -487,7 +487,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product page link url"
+                    label="product page link url"
                     style={{ width: "80%" }}
                     onChange={slider2Product1LinkUrlHandleOnChange}
                   />
@@ -496,7 +496,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product title"
+                    label="product title"
                     style={{ width: "80%" }}
                     onChange={slider2Product1TitleHandleOnChange}
                   />
@@ -505,7 +505,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product advantage 1"
+                    label="product advantage 1"
                     style={{ width: "80%" }}
                     onChange={slider2Product1Advantage1HandleOnChange}
                   />
@@ -514,7 +514,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product advantage 2"
+                    label="product advantage 2"
                     style={{ width: "80%" }}
                     onChange={slider2Product1Advantage2HandleOnChange}
                   />
@@ -523,7 +523,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product advantage 3"
+                    label="product advantage 3"
                     style={{ width: "80%" }}
                     onChange={slider2Product1Advantage3HandleOnChange}
                   />
@@ -538,7 +538,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (integer number - without € symbol and cents)"
+                    label="price (integer number - without currency symbol and cents)"
                     style={{ width: "80%" }}
                     onChange={slider2Product2PriceIntegerHandleOnChange}
                   />
@@ -547,7 +547,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add cents to price (without € symbol)"
+                    label="cents to price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider2Product2PriceDecimalHandleOnChange}
                   />
@@ -582,7 +582,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product image src"
+                    label="product image src"
                     style={{ width: "80%" }}
                     onChange={slider2Product2ImageSrcHandleOnChange}
                   />
@@ -591,7 +591,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product image alt"
+                    label="product image alt"
                     style={{ width: "80%" }}
                     onChange={slider2Product2ImageAltHandleOnChange}
                   />
@@ -600,7 +600,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product page link url"
+                    label="product page link url"
                     style={{ width: "80%" }}
                     onChange={slider2Product2LinkUrlHandleOnChange}
                   />
@@ -609,7 +609,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product title"
+                    label="product title"
                     style={{ width: "80%" }}
                     onChange={slider2Product2TitleHandleOnChange}
                   />
@@ -618,7 +618,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product advantage 1"
+                    label="product advantage 1"
                     style={{ width: "80%" }}
                     onChange={slider2Product2Advantage1HandleOnChange}
                   />
@@ -627,7 +627,7 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product advantage 2"
+                    label="product advantage 2"
                     style={{ width: "80%" }}
                     onChange={slider2Product2Advantage2HandleOnChange}
                   />
@@ -636,14 +636,14 @@ export default function PopupProductsSlider2(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add product advantage 3"
+                    label="product advantage 3"
                     style={{ width: "80%" }}
                     onChange={slider2Product2Advantage3HandleOnChange}
                   />
                 </div>
               </div>
 
-              <div className="popupInputsContainer__wrapper">
+              <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
                   variant="contained"
                   color="primary"

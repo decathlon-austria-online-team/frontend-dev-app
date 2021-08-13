@@ -477,7 +477,7 @@ export default function PopupProductsSlider1(props) {
               }
                 
                 <span class="products-slider1__priceContainer--price"
-                  >${slider1Product1Price}€</span
+                  >${slider1Product1Price}${props.userDataObjFromSheet.currencySymbol}</span
                 >
               </div>
               <div class="products-slider1__imgContainer">
@@ -521,7 +521,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >${slider1Product2Price}€</span
+                  >${slider1Product2Price}${props.userDataObjFromSheet.currencySymbol}</span
                 >
               </div>
               <div class="products-slider1__imgContainer">
@@ -565,7 +565,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >${slider1Product3Price}€</span
+                  >${slider1Product3Price}${props.userDataObjFromSheet.currencySymbol}</span
                 >
               </div>
               <div class="products-slider1__imgContainer">
@@ -620,7 +620,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >${slider1Product4Price}€</span
+                  >${slider1Product4Price}${props.userDataObjFromSheet.currencySymbol}</span
                 >
               </div>
               <div class="products-slider1__imgContainer">
@@ -664,7 +664,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >${slider1Product5Price}€</span
+                  >${slider1Product5Price}${props.userDataObjFromSheet.currencySymbol}</span
                 >
               </div>
               <div class="products-slider1__imgContainer">
@@ -708,7 +708,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >${slider1Product6Price}€</span
+                  >${slider1Product6Price}${props.userDataObjFromSheet.currencySymbol}</span
                 >
               </div>
               <div class="products-slider1__imgContainer">
@@ -780,7 +780,7 @@ export default function PopupProductsSlider1(props) {
     } else if (sliderDesignType === "oneshop") {
       setCodeOfComponent(`
       <!-- ***************** START DISPLAY PRODUCTS SLIDER1 ***************** -->
-  
+      <div class="sportpage__content--box">
   
       <link
         rel="stylesheet"
@@ -924,7 +924,7 @@ export default function PopupProductsSlider1(props) {
               }
                 
                 <span class="products-slider1__priceContainer--price"
-                  >€${slider1Product1Price}</span
+                  >${props.userDataObjFromSheet.currencySymbol}${slider1Product1Price}</span
                 >
               </div>
 
@@ -971,7 +971,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >€${slider1Product2Price}</span
+                  >${props.userDataObjFromSheet.currencySymbol}${slider1Product2Price}</span
                 >
               </div>
 
@@ -1018,7 +1018,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >€${slider1Product3Price}</span
+                  >${props.userDataObjFromSheet.currencySymbol}${slider1Product3Price}</span
                 >
               </div>
 
@@ -1076,7 +1076,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >€${slider1Product4Price}</span
+                  >${props.userDataObjFromSheet.currencySymbol}${slider1Product4Price}</span
                 >
               </div>
 
@@ -1123,7 +1123,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >€${slider1Product5Price}</span
+                  >${props.userDataObjFromSheet.currencySymbol}${slider1Product5Price}</span
                 >
               </div>
 
@@ -1170,7 +1170,7 @@ export default function PopupProductsSlider1(props) {
                   : '<!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->'
               }
                 <span class="products-slider1__priceContainer--price"
-                  >€${slider1Product6Price}</span
+                  >${props.userDataObjFromSheet.currencySymbol}${slider1Product6Price}</span
                 >
               </div>
               
@@ -1229,6 +1229,7 @@ export default function PopupProductsSlider1(props) {
           loop: true,
         });
       </script>
+      </div>
       <div style="margin: 12px 0">&nbsp;</div>
       <!-- ***************** END DISPLAY PRODUCTS SLIDER1 ***************** -->
       `);
@@ -1245,6 +1246,8 @@ export default function PopupProductsSlider1(props) {
       setShowSuccessCopied(false);
     }, 2000);
   };
+
+  console.log('slider 1 userDataObjFromSheet: ', props.userDataObjFromSheet);
   return (
     <div>
       <Modal
@@ -1403,7 +1406,7 @@ export default function PopupProductsSlider1(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (without € symbol)"
+                    label="add price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider1Product1PriceHandleOnChange}
                   />
@@ -1549,7 +1552,7 @@ export default function PopupProductsSlider1(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (without € symbol)"
+                    label="add price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider1Product2PriceHandleOnChange}
                   />
@@ -1695,7 +1698,7 @@ export default function PopupProductsSlider1(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (without € symbol)"
+                    label="add price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider1Product3PriceHandleOnChange}
                   />
@@ -1841,7 +1844,7 @@ export default function PopupProductsSlider1(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (without € symbol)"
+                    label="add price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider1Product4PriceHandleOnChange}
                   />
@@ -1987,7 +1990,7 @@ export default function PopupProductsSlider1(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (without € symbol)"
+                    label="add price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider1Product5PriceHandleOnChange}
                   />
@@ -2133,7 +2136,7 @@ export default function PopupProductsSlider1(props) {
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="add price (without € symbol)"
+                    label="add price (without currency symbol)"
                     style={{ width: "80%" }}
                     onChange={slider1Product6PriceHandleOnChange}
                   />
@@ -2236,7 +2239,7 @@ export default function PopupProductsSlider1(props) {
                 </div>
               </div>
 
-              <div className="popupInputsContainer__wrapper">
+              <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
                   variant="contained"
                   color="primary"

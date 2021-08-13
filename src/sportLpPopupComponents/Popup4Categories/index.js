@@ -133,6 +133,7 @@ export default function Popup4Categories(props) {
     setGenerateCode(true);
     setCodeOfComponent(`
     <!-- ***************** START DISPLAY 4 CATEGORIES ***************** -->
+    <div class="sportpage__content--box">
     <link
       rel="stylesheet"
       href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/categories.css"
@@ -202,6 +203,7 @@ export default function Popup4Categories(props) {
         </a>
       </div>
       <!-- end .categories-container -->
+     </div>
     </div>
     <div style="margin: 12px 0">&nbsp;</div>
     <!-- ***************** END DISPLAY 4 CATEGORIES ***************** -->
@@ -436,7 +438,7 @@ export default function Popup4Categories(props) {
                 </div>
               </div>
 
-              <div className="popupInputsContainer__wrapper">
+              <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
                   variant="contained"
                   color="primary"

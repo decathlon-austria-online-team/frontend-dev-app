@@ -29,3 +29,43 @@
     padding: 20px;
   }
 }
+
+
+.primary-button-container button{
+  background-color: #0082C3;
+  color: #fff;
+}
+.primary-button-container button:hover{
+  background-color: #004876;
+}
+
+.page {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+ }
+
+/* start transition group styles */
+
+.remove-btn {
+  margin-right: 0.5rem;
+}
+
+.item-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
+
+/* end transition group styles */

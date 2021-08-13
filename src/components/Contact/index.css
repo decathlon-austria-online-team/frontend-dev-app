@@ -1,0 +1,37 @@
+.contact {
+    text-align: left;
+    padding: 20px;
+}
+
+.contact__title {
+    text-align: left;
+}
+
+.contact__paragraph {
+    margin-bottom: 14px;
+}
+.contact__email {
+    background-color: #0082C3;
+    color: #fff;
+    padding: 6px;
+    font-size: 20px;
+    display: inline-block;
+    border-radius: 5px;
+}
+.contact__email a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media(min-width: 1200px) {
+    .contact {
+        padding-right: 200px;
+    }
+    .contact__email {
+        margin-top: 50px;
+    }
+    .contact__title {
+        margin-bottom: 40px !important;
+    }
+}

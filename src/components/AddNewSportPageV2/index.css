@@ -1,0 +1,147 @@
+.create-sport-page {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.create-sport-page button {
+    min-width: 160px;
+}
+
+.create-sport-page__how-to-link {
+    cursor: pointer;
+    color: #0082C3;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.create-sport-page__editing-zone {
+    border: 1px solid #242323;
+    margin-top: 10px;
+}
+
+.create-sport-page__sub-editing-zone {
+    border: 1px solid #eee;
+    padding: 12px 8px;
+}
+
+.create-sport-page__editing-zone-subtitle {
+    font-weight: 400;
+    margin-bottom: 6px;
+}
+
+.create-sport-page__editing-zone-download-link {
+    color: #0082C3;
+    cursor: pointer;
+}
+
+.create-sport-page__editing-zone-btn-container {
+    margin-top: 12px;
+}
+
+.create-sport-page__editing-components-form-container {
+    display: flex;
+    align-items: center;
+}
+
+.create-sport-page__available-components {
+    border: 1px solid #242323;
+    margin-top: 30px;
+    padding: 12px 8px;
+}
+ 
+.create-sport-page__available-components-container {
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 10px;
+}
+
+
+
+.create-sport-page__available-component {
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 134px;
+    
+}
+
+.create-sport-page__available-component-title {
+    font-size: 24px;
+    color: #242323;
+}
+
+.create-sport-page__available-component-preview {
+    font-size: 16px;
+    color: #0082C3;
+    cursor: pointer;
+}
+
+.create-sport-page__available-component-img img {
+    width: 150px;
+}
+
+
+@media(min-width: 1200px) {
+    .create-sport-page__boxes {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 24px;
+    }
+
+    .create-sport-page__available-components {
+         margin-top: 0; 
+         width: 30%;
+         height: 400px;
+    }
+    .create-sport-page__editing-zone {
+        width: 65%;
+        height: 400px;
+        margin-top: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .create-sport-page__editing-zone--right {
+        width: 70%;
+        
+    }
+    .create-sport-page__editing-zone--left {
+        width: 30%;
+    }
+
+    .create-sport-page__editing-menu {
+        height: 100%;
+    }
+
+    .create-sport-page__editing-header {
+        height: 27%;
+    }
+
+    .create-sport-page__editing-components {
+        height: 73%;
+    }
+    
+    .create-sport-page__sub-editing-zone {
+        padding-left: 18px;
+    }
+}
+
+@media(min-width: 1800px) {
+    .create-sport-page__available-components {
+        height: 600px;
+   }
+   .create-sport-page__editing-zone {
+       height: 600px;
+   }
+
+   .create-sport-page__available-components-container {
+    max-height: 500px;
+
+   }
+}

@@ -228,7 +228,7 @@ resolve();
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script
   src="https://kit.fontawesome.com/68857e56a4.js"
-  crossorigin="anonymous"
+  crossorigin="anonymous" 
 ></script>
 <link rel="stylesheet" href="https://decathlon-source.eu/frontend/sport-pages/code-files/sport-page/style.css">
 
