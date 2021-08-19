@@ -783,100 +783,15 @@ export default function PopupProductsSlider1(props) {
       <div class="sportpage__content--box">
   
       <link
-        rel="stylesheet"
-        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider1.css"
-      />
+      rel="stylesheet"
+      href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider1-oneshop.css"
+    />
   
       <style>
         .products-slider1__display-category${sliderId} {
           background-image: url("${slider1CategoryColumnImageSrc}") !important;
           background-position: center;
         }
-  
-        .products-slider1__priceContainer {
-          position: absolute;
-          top: 26px !important;
-          right: 20px;
-      }
-       .products-slider1 .swiper-slide {
-         height: 368px;
-      }
-     
-      .sportLp__section-title {
-         font-weight: bold;
-      }
-  
-      .products-slider1 {
-        padding-bottom: 0 !important;
-      }
-  
-      @media (min-width: 1200px) {
-        .products-slider1__arrow {
-            top: 46% !important;
-        }
-  
-      }
-
-      @media(min-width: 1800px) {
-        .products-slider1 .swiper-container {
-           width: 74% !important;  
-        }
-
-        .products-slider1__imgContainer {
-          width: 80%;
-        }
-
-        .products-slider1__arrow--right {
-          right: 9%;
-       }
-       .products-slider1__arrow--left {
-         left: 9%;
-       }
-     }
-
-      /* START OVERRIDE TO NEW STYLES ONESHOP DESIGN */
-      .products-slider1__priceContainer {
-      position: static !important;
-      margin-top: -20px;
-    }
-
-    .products-slider1__priceContainer--price {
-      font-weight: 400;
-      background-color: rgb(255, 234, 40);
-      color: rgb(78, 78, 78);
-      padding: 1px 6px;
-      font-family: Roboto,sans-serif;
-      font-size: 14px;
-    }
-
-    .products-slider1__info {
-      position: static !important; 
-      margin-top: 10px;
-      margin-bottom: 24px;
-  }
-
-    .products-slider1__imgContainer {
-      position: static !important;
-      transform: none !important;
-      width: 72%;
-      margin-top: 26px;
-      margin-bottom: 50px;
-    }
-    @media (min-width: 1200px) {
-      .products-slider1__imgContainer {
-        margin-bottom: 30px;
-      }
-      .sportLp__section-title {
-        padding-left: 20px; 
-     }
-    }
-
-    .products-slider1__arrow {
-      position: absolute;
-      top: 40%;
-  }
-  /* END OVERRIDE TO NEW STYLES ONESHOP DESIGN */
-  
       </style>
 
       <h2 class="sportLp__section-title">${slider1Title}</h2>
