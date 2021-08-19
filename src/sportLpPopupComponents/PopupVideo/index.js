@@ -110,7 +110,7 @@ export default function PopupVideo(props) {
               <div className="popupInputsContainer__sectionWrapper">
               <div className="popupInputsContainer__wrapper">
                 <small>
-                Please give a section id number (this number should be unique only for this section in order to differentiate from the other sections on the page)
+                Please give a section id name/number (this name/number should be unique only for this section in order to differentiate from the other sections on the page)
                 </small>
                   <TextField
                     id="standard-basic"

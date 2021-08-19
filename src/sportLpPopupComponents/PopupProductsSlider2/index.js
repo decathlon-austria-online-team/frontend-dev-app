@@ -403,7 +403,7 @@ export default function PopupProductsSlider2(props) {
                   Slider Id Number:
                 </p>
                 <small>
-                  Please give a slider id number (this number should be unique
+                  Please give a slider id name/number (this name/number should be unique
                   only for this slider in order to differentiate from the other
                   sliders on the page)
                 </small>

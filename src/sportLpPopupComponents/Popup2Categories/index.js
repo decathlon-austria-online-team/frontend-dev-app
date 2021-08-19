@@ -190,7 +190,7 @@ export default function Popup2Categories(props) {
                   section id number:
                 </p>
                 <small>
-                  Please give a section id number (this number should be unique
+                  Please give a section id name/number (this name/number should be unique
                   only for this section in order to differentiate from the other
                   sections on the page)
                 </small>

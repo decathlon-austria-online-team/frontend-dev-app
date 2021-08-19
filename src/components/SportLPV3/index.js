@@ -51,6 +51,7 @@ import PopupVideo from "../../sportLpPopupComponents/PopupVideo";
 import PopupTrboSliderContainer from "../../sportLpPopupComponents/PopupTrboSliderContainer";
 import PopupProductsSlider2 from "../../sportLpPopupComponents/PopupProductsSlider2";
 import PopupProductsSlider1 from "../../sportLpPopupComponents/PopupProductsSlider1";
+import PopupProductsSlider1V2 from "../../sportLpPopupComponents/PopupProductsSlider1V2";
 import PopupCodeConvertorSp from "../../sportLpPopupComponents/PopupCodeConvertorSp";
 
 
@@ -137,18 +138,24 @@ const SportLPV3 = (props) => {
         type: 'page component',
         onclick: () => setOpenProductsSlider2Component(true)
     },
-    {
+   /* {
       img: screenshotProductsSlider1,
       title: 'Product slider',
       type: 'page component',
       onclick: () => setOpenProductsSlider1Component(true)
-    },
+    },*/
     {
+      img: screenshotProductsSlider1,
+      title: 'Product slider',
+      type: 'page component',
+      onclick: () => setOpenProductsSlider1V2Component(true)
+    }
+   /* {
       img: codeImage,
       title: 'sport page v1 to v2',
       type: 'code converter',
       onclick: () => setOpenSportPageCodeConvertorV1ToV2(true)
-    }
+    }*/
     ]);
 
 
@@ -191,6 +198,11 @@ const SportLPV3 = (props) => {
       const [
         openProductsSlider1Component,
         setOpenProductsSlider1Component,
+      ] = useState(false);
+
+      const [
+        openProductsSlider1V2Component,
+        setOpenProductsSlider1V2Component,
       ] = useState(false);
 
       const [
@@ -355,6 +367,12 @@ const SportLPV3 = (props) => {
               imgUrl={screenshotProductsSlider1}
               open={openProductsSlider1Component}
               handleClose={() => setOpenProductsSlider1Component(false)}
+              userDataObjFromSheet={props.userDataObjFromSheet}
+            />
+            <PopupProductsSlider1V2
+              imgUrl={screenshotProductsSlider1}
+              open={openProductsSlider1V2Component}
+              handleClose={() => setOpenProductsSlider1V2Component(false)}
               userDataObjFromSheet={props.userDataObjFromSheet}
             />
 
