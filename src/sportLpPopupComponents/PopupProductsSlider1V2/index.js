@@ -200,7 +200,15 @@ export default function PopupProductsSlider1V2(props) {
                  </div>
       
                  <div class="products-slider1__priceContainer">
-                 <!--<span class="products-slider1__priceContainer--ab-price">Ab</span>-->
+                 ${p[7] === "yes" ? 
+                 `
+                 <span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>
+                 ` 
+                 : 
+                 `
+                 <!--<span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>-->
+                 `}
+                
                    
                    <span class="products-slider1__priceContainer--price"
                      >${props.userDataObjFromSheet.currencySymbol}${p[6]}</span
