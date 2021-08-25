@@ -62,7 +62,7 @@ export default function PopupVideo(props) {
     <link href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/video.css" rel="stylesheet">
     
     <div class="video-section" id="video-section${videoSectionId}">
-      <h2 class="video-section__title">${videoTitle}</h2>
+      <h2 class="video-section__title sportLp__section-title">${videoTitle}</h2>
       <div class="video-container">
         <iframe
           allowfullscreen="allowfullscreen"

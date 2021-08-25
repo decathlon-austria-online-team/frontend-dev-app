@@ -121,7 +121,7 @@ console.log('displayIndexNumOfDynamicTextData ', displayIndexNumOfDynamicTextDat
                     </div>
 
                 <Typography variant="h1" component="h2" gutterBottom className="title login-title">
-                for <img src={decathlonLogo} className="login-decathlon-logo" /> oneshop sites
+                which can be used for<br></br> OneShop
                 </Typography>
 
 
