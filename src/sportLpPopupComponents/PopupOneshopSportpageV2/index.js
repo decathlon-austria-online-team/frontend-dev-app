@@ -189,7 +189,9 @@ export default function PopupOneshopSportpageV2(props) {
 
   const generateCodeFunc = () => {
     setGenerateCode(true);
-    setCodeOfComponent(
+
+    if(props.userDataObjFromSheet.languageType === "LTR") {
+      setCodeOfComponent(
         `
         <!-- ***************** START ONESHOP SPORT PAGE  ***************** -->
         <!-- START SPORT PAGE SCRIPTS -->
@@ -343,7 +345,226 @@ export default function PopupOneshopSportpageV2(props) {
         
             `
     );
+    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+      setCodeOfComponent(
+        `
+        <!-- ***************** START ONESHOP SPORT PAGE  ***************** -->
+        <!-- START SPORT PAGE SCRIPTS -->
+        <link rel="stylesheet" href="https://decathlon-source.eu/frontend/swiperjs-files-v-6-8-4/swiper-bundle.css" />
+        <script src="https://decathlon-source.eu/frontend/swiperjs-files-v-6-8-4/swiper-bundle.js"></script>
+        <script
+          src="https://kit.fontawesome.com/68857e56a4.js"
+          crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="https://decathlon-source.eu/frontend/sport-pages/code-files/sport-page/style.css">
+        <!-- END SPORT PAGE SCRIPTS -->
+
+        <style>
+          #header-img {
+            background-image: url('${headerImgSrc}') !important;
+          }
+
+          ${pageWithOrWithoutMenu != "yes" ? (
+              `
+          .sportpage {
+              background-color: #f4f5f7 !important;
+            }
+            
+            @media(min-width: 1024px) {
+              .sportpage__nav-container {
+                  display: none !important;
+              }
+            
+              .sportpage__header, .sportpage__content {
+                  padding-left: 0 !important;
+              }
+            }
+              `
+          ) : (``)}
+
+          /* start sport page rtl override */
+          .sportpage__header--text p {
+               text-align: right;
+           }
+           .sportpage__menu-item-content--left {
+               margin-left: 0;
+              margin-right: 16px;
+           }
+           .sportpage__menu-item-content--right {
+             margin-right: 0;
+             margin-left: 16px;
+           }
+           .sportpage__menu, .sportpage__submenu {
+              padding-right: 0;
+           }
+           .sportpage__submenu-item-content--right {
+              margin-left: 16px;
+           }
+           .sportpage__submenu-item-content--left {
+               margin-left: 0;
+               margin-right: 16px;
+           }
+           .sportpage__menu-item-content--left-text {
+               margin-left: 0;
+               padding-right: 0;
+               margin-right: 8px;
+               padding-left: 4px;
+           }
+       
+           @media(min-width: 1024px) {
+               .sportpage__nav-container {
+                   right: 0;
+               }
+               .sportpage__header, .sportpage__content {
+                   padding-left: 0;
+                   padding-right: 275px;
+               }
+               .sportpage__header {
+                   padding-left: 40px !important;
+               }
+               .sportpage__header--text {
+                 padding: 32px 80px 32px 37px;
+                 text-align: right;
+               }
+               .sportLp__section-title {
+                   padding-left: 0;
+                   padding-right: 20px;
+               }
+               .sportLp__section-title {
+                   margin-left: 0;
+                   margin-right: 83px;
+               }
+           }
+       
+           @media(min-width: 1800px) {
+             .sportpage__header {
+                   padding-left: 85px !important;
+               }
+           }
+         /* end sport page rtl override */
+        </style>
+        
+        
+        
+        <div class="sportpage">
+          <div class="sportpage__header">
+            <div class="sportpage__header--text">
+              <h1>${headerTitle}</h1>
+              <p>
+                 ${headerText}
+              </p>
+            </div>
+            <div class="sportpage__header--img">
+              <div id="header-img"></div>
+            </div>
+          </div>
+        
+          <div class="sportpage__nav-container">
+            <nav class="sportpage__nav">
+              <ul class="sportpage__menu">
+              ${menuReadyDataToMap && menuReadyDataToMap.map((el, index) => (
+        
+                `
+                ${el[0][2] === "yes" ? (
+                  `
+                  <li class="sportpage__menu-item">
+                  <div class="sportpage__menu-item-content">
+                    <div class="sportpage__menu-item-content--left">
+                      <div class="sportpage__menu-item-content--left-img">
+                        <img
+                          alt="${el[0][0]}"
+                          src="${el[0][1]}"
+                        />
+                      </div>
+                      <div class="sportpage__menu-item-content--left-text">
+                       ${el[0][0]}
+                      </div>
+                    </div>
+                    <div class="sportpage__menu-item-content--right">
+                      <i class="fas fa-plus"></i>
+                      <i class="fas fa-minus"></i>
+                    </div>
+                  </div>
+                  <ul class="sportpage__submenu">
+                  ${el[1].map((sub) => (
+                    `
+                    <li class="sportpage__submenu-item">
+                    <a href="${sub[1]}">
+                      <div class="sportpage__submenu-item-content">
+                        <div class="sportpage__submenu-item-content--left" ${sub[2] === "yes" ? `style="font-weight: bold; font-style: italic;"` : ``}>
+                           ${sub[0]}
+                        </div>
+                        <div class="sportpage__submenu-item-content--right">
+                          <i class="fas fa-chevron-left"></i>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                    `
+                  )).join('')}
+                  </ul>
+                </li>
+                  `
+                ) : (
+        
+                  `
+                  <li class="sportpage__menu-item">
+                  <a href="${el[0][3]}">
+                    <div class="sportpage__menu-item-content">
+                      <div class="sportpage__menu-item-content--left">
+                        <div class="sportpage__menu-item-content--left-img">
+                          <img
+                            alt="${el[0][0]}"
+                            src="${el[0][1]}"
+                          />
+                        </div>
+                        <div class="sportpage__menu-item-content--left-text">
+                           ${el[0][0]}
+                        </div>
+                      </div>
+                      <div class="sportpage__menu-item-content--right">
+                        <i class="fas fa-chevron-left"></i>
+                      </div>
+                    </div>
+                    <ul class="sportpage__submenu"></ul>
+                  </a>
+                </li>
+                  `
+                )}
+                `
+              
+              )).join('')}
+        
+        
+              </ul>
+            </nav>
+          </div>
+        
+        
+          
+          <div class="sportpage__content">
+          <!-- *** START SPORT PAGE COMPONENTS - ADD BELOW *** -->
+        
+
+          <!-- *** END SPORT PAGE COMPONENTS - ADD ABOVE *** -->
+          </div>
+         
+         
+        </div>
+        
+        
+        <script src="https://decathlon-source.eu/frontend/sport-pages/code-files/sport-page/index.js"></script>
+        
+        
+        
+        <!-- ***************** END ONESHOP SPORT PAGE  ***************** -->
+        
+            `
+    );
+    }
+   
   };
+ 
   return (
     <div>
       <Modal

@@ -129,8 +129,8 @@ const updateSettingsReq = async () => {
                 onChange={(e) => setUserLanguageType(e.target.value)}
               >
          <option aria-label="None" value="" />
-         <option value="LTR">LTR</option>
-         <option value="RTL">RTL</option>
+         <option value="LTR">LEFT TO RIGHT</option>
+         <option value="RTL">RIGHT TO LEFT</option>
    
             </Select>
             </FormControl>

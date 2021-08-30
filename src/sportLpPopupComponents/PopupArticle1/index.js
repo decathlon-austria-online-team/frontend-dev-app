@@ -88,37 +88,80 @@ export default function PopupArticle1(props) {
 
   const generateCodeFunc = () => {
     setGenerateCode(true);
-    setCodeOfComponent(`
-    <!-- ***************** START DISPLAY ARTICLE1 ***************** -->
-    <div class="sportpage__content--box">
-    <link
-      rel="stylesheet"
-      href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/articles.css"
-    />
-    <style>
-      .article1 .article1__imgContainer${categorySectionIdNumber} {
-        background-image: url("${article1ImgUrl}") !important;
-        background-position: center;
-      }
 
-    </style>
-    <div class="article1">
-      <div class="article1__imgContainer article1__imgContainer${categorySectionIdNumber}"></div>
-      <div class="article1__content">
-        <p class="article1__content--categoryName">${article1LabelName}</p>
-        <h3 class="article1__content--title">
-          ${article1Title}
-        </h3>
-        <p class="article1__content--text">
-          ${article1Text}
-        </p>
-        <a href="${article1BtnLinkUrl}" class="article1__content--cta">${article1BtnText}</a>
+    if(props.userDataObjFromSheet.languageType === "LTR") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY ARTICLE1 ***************** -->
+      <div class="sportpage__content--box">
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/articles.css"
+      />
+      <style>
+        .article1 .article1__imgContainer${categorySectionIdNumber} {
+          background-image: url("${article1ImgUrl}") !important;
+          background-position: center;
+        }
+  
+      </style>
+      <div class="article1">
+        <div class="article1__imgContainer article1__imgContainer${categorySectionIdNumber}"></div>
+        <div class="article1__content">
+          <p class="article1__content--categoryName">${article1LabelName}</p>
+          <h3 class="article1__content--title">
+            ${article1Title}
+          </h3>
+          <p class="article1__content--text">
+            ${article1Text}
+          </p>
+          <a href="${article1BtnLinkUrl}" class="article1__content--cta">${article1BtnText}</a>
+        </div>
+       </div>
       </div>
-     </div>
-    </div>
-    <div style="margin: 12px 0">&nbsp;</div>
-    <!-- ***************** END DISPLAY ARTICLE1 ***************** -->
-    `);
+      <div style="margin: 12px 0">&nbsp;</div>
+      <!-- ***************** END DISPLAY ARTICLE1 ***************** -->
+      `);
+    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY ARTICLE1 ***************** -->
+      <div class="sportpage__content--box">
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/articles.css"
+      />
+      <style>
+        .article1 .article1__imgContainer${categorySectionIdNumber} {
+          background-image: url("${article1ImgUrl}") !important;
+          background-position: center;
+        }
+  
+        /* start override rtl*/
+        .article1 .article1__content--categoryName {
+          padding: 8px 16px 8px 42px;
+          clip-path: polygon(0 0, 100% 0%, 100% 100%, 8% 100%);
+        }
+        /* end override rtl*/
+      </style>
+      <div class="article1">
+        <div class="article1__imgContainer article1__imgContainer${categorySectionIdNumber}"></div>
+        <div class="article1__content">
+          <p class="article1__content--categoryName">${article1LabelName}</p>
+          <h3 class="article1__content--title">
+            ${article1Title}
+          </h3>
+          <p class="article1__content--text">
+            ${article1Text}
+          </p>
+          <a href="${article1BtnLinkUrl}" class="article1__content--cta">${article1BtnText}</a>
+        </div>
+       </div>
+      </div>
+      <div style="margin: 12px 0">&nbsp;</div>
+      <!-- ***************** END DISPLAY ARTICLE1 ***************** -->
+      `);
+    }
+
+    
   };
 
   // copy to clip func

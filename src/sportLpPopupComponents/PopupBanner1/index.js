@@ -83,38 +83,88 @@ export default function PopupBanner1(props) {
 
   const generateCodeFunc = () => {
     setGenerateCode(true);
-    setCodeOfComponent(`
-    <!-- ***************** START DISPLAY BANNER1 ***************** -->
-    <div class="sportpage__content--box">
-    <div style="margin: 15px 0">&nbsp;</div>
-    <link
-      rel="stylesheet"
-      href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/banners.css"
-    />
-    <style>
-      .banner1 .banner1__right-side${categorySectionIdNumber} {
-        background-image: url("${banner1ImgUrl}") !important;
-        background-position: center;
-      }
-    </style>
-    <div class="banner1">
-      <div class="banner1__left-side">
-        <div class="banner1__left-side--content">
-          <p class="banner1__left-side--text banner1__left-side--text1">
-            ${banner1FirstTitle}
-          </p>
-          <p class="banner1__left-side--text banner1__left-side--text2">
-            ${banner1SecondBoldTitle}
-          </p>
-          <a href="${banner1CtaBtnLinkUrl}" class="banner1__left-side--cta">${banner1CtaBtnText}</a>
+
+    if(props.userDataObjFromSheet.languageType === "LTR") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY BANNER1 ***************** -->
+      <div class="sportpage__content--box">
+      <div style="margin: 15px 0">&nbsp;</div>
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/banners.css"
+      />
+      <style>
+        .banner1 .banner1__right-side${categorySectionIdNumber} {
+          background-image: url("${banner1ImgUrl}") !important;
+          background-position: center;
+        }
+      </style>
+      <div class="banner1">
+        <div class="banner1__left-side">
+          <div class="banner1__left-side--content">
+            <p class="banner1__left-side--text banner1__left-side--text1">
+              ${banner1FirstTitle}
+            </p>
+            <p class="banner1__left-side--text banner1__left-side--text2">
+              ${banner1SecondBoldTitle}
+            </p>
+            <a href="${banner1CtaBtnLinkUrl}" class="banner1__left-side--cta">${banner1CtaBtnText}</a>
+          </div>
         </div>
+        <div class="banner1__right-side banner1__right-side${categorySectionIdNumber}"></div>
+       </div>
       </div>
-      <div class="banner1__right-side banner1__right-side${categorySectionIdNumber}"></div>
-     </div>
-    </div>
-    <div style="margin: 15px 0">&nbsp;</div>
-    <!-- ***************** END DISPLAY BANNER1 ***************** -->
-    `);
+      <div style="margin: 15px 0">&nbsp;</div>
+      <!-- ***************** END DISPLAY BANNER1 ***************** -->
+      `);
+    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY BANNER1 ***************** -->
+      <div class="sportpage__content--box">
+      <div style="margin: 15px 0">&nbsp;</div>
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/banners.css"
+      />
+      <style>
+        .banner1 .banner1__right-side${categorySectionIdNumber} {
+          background-image: url("${banner1ImgUrl}") !important;
+          background-position: center;
+        }
+
+        /* start override css rtl */
+        .banner1 .banner1__right-side {
+            clip-path: polygon(0% 0%, 85% 0%, 100% 100%, 0% 100%);
+        }
+        .banner1 .banner1__left-side {
+            clip-path: none;
+        }
+        .banner1 {
+            background: linear-gradient( to left, rgba(0, 135, 195, 1), rgba(0, 135, 195, 0.4) );
+        }
+        /* end override css rtl */
+      </style>
+      <div class="banner1">
+        <div class="banner1__left-side">
+          <div class="banner1__left-side--content">
+            <p class="banner1__left-side--text banner1__left-side--text1">
+              ${banner1FirstTitle}
+            </p>
+            <p class="banner1__left-side--text banner1__left-side--text2">
+              ${banner1SecondBoldTitle}
+            </p>
+            <a href="${banner1CtaBtnLinkUrl}" class="banner1__left-side--cta">${banner1CtaBtnText}</a>
+          </div>
+        </div>
+        <div class="banner1__right-side banner1__right-side${categorySectionIdNumber}"></div>
+       </div>
+      </div>
+      <div style="margin: 15px 0">&nbsp;</div>
+      <!-- ***************** END DISPLAY BANNER1 ***************** -->
+      `);
+    }
+
+    
   };
 
   // copy to clip func

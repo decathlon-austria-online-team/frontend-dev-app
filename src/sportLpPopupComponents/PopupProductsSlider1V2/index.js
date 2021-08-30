@@ -152,7 +152,9 @@ export default function PopupProductsSlider1V2(props) {
 
   const generateCodeFunc = () => {
     setGenerateCode(true);
-    setCodeOfComponent(
+
+    if(props.userDataObjFromSheet.languageType === "LTR") {
+      setCodeOfComponent(
         `
         <!-- ***************** START DISPLAY PRODUCTS SLIDER ID: ${idOfSliderComponent} ***************** -->
       <div style="margin: 12px 0">&nbsp;</div>
@@ -301,6 +303,167 @@ export default function PopupProductsSlider1V2(props) {
         
             `
     );
+    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+      setCodeOfComponent(
+        `
+        <!-- ***************** START DISPLAY PRODUCTS SLIDER ID: ${idOfSliderComponent} ***************** -->
+      <div style="margin: 12px 0">&nbsp;</div>
+      <div class="sportpage__content--box">
+  
+        <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider1-oneshop.css"
+      />
+      <style>
+        /* START RTL OVERRIDE STYLES */
+        .products-slider1__display-category-btn p i {
+                left: 4%;
+                right: auto;
+            }
+        /* END RTL OVERRIDE STYLES */
+      </style>
+  
+        <h2 class="sportLp__section-title">${sliderTitleName}</h2>
+        <div class="products-slider1">
+          <!-- Swiper -->
+          <div class="swiper-container products-slider1__swiper-container products-slider1__swiper-container${idOfSliderComponent}">
+            <div class="swiper-wrapper">
+            ${productDataArrReadyToMap.map((p, index) => (
+                `
+		         ${p[1] === "product" ? (
+                     `
+                     <div class="swiper-slide">
+         
+                      ${p[3] === "yes" ? (
+                          `
+                        <div class="products-slider1__labelContainer" style="background-color: ${p[4] === "green" ? `#0DB14B` : p[4] === "red" ? `#E20C18` : p[4] === "orange" ? `#EC6607` : ``}">
+                          <span>${p[5]}</span>
+                        </div>
+                          `
+                      ) : (
+                          `
+                          <!--
+                          <div class="products-slider1__labelContainer" style="background-color: #0DB14B">
+                            <span></span>
+                          </div>
+                          -->
+                          `
+                      )}
+
+                 <div class="products-slider1__imgContainer">
+                   <a href="${p[10]}">
+                     <img
+                       alt="${p[12]}"
+                       src="${p[9]}"
+                     />
+                   </a>
+                 </div>
+      
+                 <div class="products-slider1__priceContainer">
+                 ${p[7] === "yes" ? 
+                 `
+                 <span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>
+                 ` 
+                 : 
+                 `
+                 <!--<span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>-->
+                 `}
+                
+                   
+                   <span class="products-slider1__priceContainer--price"
+                     >${props.userDataObjFromSheet.currencySymbol}${p[6]}</span
+                   >
+                 </div>
+      
+                 <div class="products-slider1__info">
+                   <div class="products-slider1__nameContainer">
+                     <span>${p[11]}</span>
+                   </div>
+                   <div class="products-slider1__brandContainer">
+                     <span>${p[12]}</span>
+                   </div>
+                 </div>
+               </div>
+                     `
+                 ) : p[1] === "category" ? (
+                     `
+                     <div class="swiper-slide">
+                     <style>
+                     .products-slider1__display-category${idOfSliderComponent}${index} {
+                       background-image: url("${p[13]}") !important;
+                       background-position: center;
+                     }
+                   </style>
+                     <div class="products-slider1__display-category products-slider1__display-category${idOfSliderComponent}${index}">
+                       <a href="${p[14]}" class="products-slider1__display-category-btn">
+                         <p>
+                           <span> ${p[15]} </span>
+          
+                           <i class="fas fa-chevron-left"></i>
+                         </p>
+                       </a>
+                     </div>
+                   </div>
+                     `
+                 ) : ''}
+                `
+            )).join('')}
+             
+            </div>
+          </div>
+    
+          <div class="products-slider1__arrow products-slider1__arrow--left products-slider1__arrow--left${idOfSliderComponent}">
+            <i class="fas fa-chevron-circle-left"></i>
+          </div>
+          <div class="products-slider1__arrow products-slider1__arrow--right products-slider1__arrow--right${idOfSliderComponent}">
+            <i class="fas fa-chevron-circle-right"></i>
+          </div>
+    
+          <!-- Add Arrows -->
+    
+          <!-- Add Pagination -->
+          <div class="swiper-pagination"></div>
+        </div>
+        <!-- end .products-slider1 -->
+    
+        <!-- Swiper JS -->
+        <script src="../package/swiper-bundle.min.js"></script>
+    
+        <!-- Initialize Swiper -->
+        <script>
+          var swipermountainbike__slider = new Swiper(".products-slider1__swiper-container${idOfSliderComponent}", {
+            navigation: {
+              nextEl: ".products-slider1__arrow--right${idOfSliderComponent}",
+              prevEl: ".products-slider1__arrow--left${idOfSliderComponent}",
+            },
+    
+            breakpoints: {
+              200: {
+                slidesPerView: 1,
+                spaceBetweenSlides: 30,
+              },
+    
+              760: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+              },
+              1100: {
+                slidesPerView: 4,
+                spaceBetween: 2,
+              },
+            },
+            loop: true,
+          });
+        </script>
+        </div>
+        <div style="margin: 12px 0">&nbsp;</div>
+        <!-- ***************** END DISPLAY PRODUCTS SLIDER ID: ${idOfSliderComponent} ***************** -->
+        
+            `
+    );
+    }
+
+    
   };
   return (
     <div>

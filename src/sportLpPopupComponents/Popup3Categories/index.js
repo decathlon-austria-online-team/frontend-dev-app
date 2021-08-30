@@ -118,67 +118,143 @@ export default function Popup3Categories(props) {
 
   const generateCodeFunc = () => {
     setGenerateCode(true);
-    setCodeOfComponent(`
-    <!-- ***************** START DISPLAY 3 CATEGORIES ***************** -->
-    <div class="sportpage__content--box">
-    <link
-      rel="stylesheet"
-      href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/categories.css"
-    />
-    <style>
-      .three-categories .first-category${categorySectionIdNumber} {
-        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
-          url("${category1ImgUrl}") !important;
-        background-size: cover !important;
-        background-position: center !important;
-      }
-      .three-categories .second-category${categorySectionIdNumber} {
-        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
-          url("${category2ImgUrl}") !important;
-        background-size: cover !important;
-        background-position: center !important;
-      }
 
-      .three-categories .third-category${categorySectionIdNumber} {
-        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
-          url("${category3ImgUrl}") !important;
-        background-size: cover !important;
-        background-position: center !important;
-      }
-
-    </style>
-    <h2 class="sportLp__section-title">${sectionTitleInput}</h2>
-    <div class="three-categories">
-
-      <div class="categories-container">
-        <a href="${category1ImgLinkUrl}">
-          <div class="category first-category first-category${categorySectionIdNumber}">
-            <div class="category-content">
-              <p class="category__title">${category1NameLabel}</p>
+    if(props.userDataObjFromSheet.languageType === "LTR") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY 3 CATEGORIES ***************** -->
+      <div class="sportpage__content--box">
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/categories.css"
+      />
+      <style>
+        .three-categories .first-category${categorySectionIdNumber} {
+          background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
+            url("${category1ImgUrl}") !important;
+          background-size: cover !important;
+          background-position: center !important;
+        }
+        .three-categories .second-category${categorySectionIdNumber} {
+          background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
+            url("${category2ImgUrl}") !important;
+          background-size: cover !important;
+          background-position: center !important;
+        }
+  
+        .three-categories .third-category${categorySectionIdNumber} {
+          background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
+            url("${category3ImgUrl}") !important;
+          background-size: cover !important;
+          background-position: center !important;
+        }
+  
+      </style>
+      <h2 class="sportLp__section-title">${sectionTitleInput}</h2>
+      <div class="three-categories">
+  
+        <div class="categories-container">
+          <a href="${category1ImgLinkUrl}">
+            <div class="category first-category first-category${categorySectionIdNumber}">
+              <div class="category-content">
+                <p class="category__title">${category1NameLabel}</p>
+              </div>
             </div>
-          </div>
-        </a>
-        <a href="${category2ImgLinkUrl}">
-          <div class="category second-category second-category${categorySectionIdNumber}">
-            <div class="category-content">
-              <p class="category__title">${category2NameLabel}</p>
+          </a>
+          <a href="${category2ImgLinkUrl}">
+            <div class="category second-category second-category${categorySectionIdNumber}">
+              <div class="category-content">
+                <p class="category__title">${category2NameLabel}</p>
+              </div>
             </div>
-          </div>
-        </a>
-        <a href="${category3ImgLinkUrl}">
-          <div class="category third-category third-category${categorySectionIdNumber}">
-            <div class="category-content">
-              <p class="category__title">${category3NameLabel}</p>
+          </a>
+          <a href="${category3ImgLinkUrl}">
+            <div class="category third-category third-category${categorySectionIdNumber}">
+              <div class="category-content">
+                <p class="category__title">${category3NameLabel}</p>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
+        <!-- end .categories-container -->
+       </div>
       </div>
-      <!-- end .categories-container -->
-     </div>
-    </div>
-    <div style="margin: 12px 0">&nbsp;</div>
-    <!-- ***************** END DISPLAY 3 CATEGORIES ***************** -->
-    `);
+      <div style="margin: 12px 0">&nbsp;</div>
+      <!-- ***************** END DISPLAY 3 CATEGORIES ***************** -->
+      `);
+    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY 3 CATEGORIES ***************** -->
+      <div class="sportpage__content--box">
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/categories.css"
+      />
+      <style>
+        .three-categories .first-category${categorySectionIdNumber} {
+          background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
+            url("${category1ImgUrl}") !important;
+          background-size: cover !important;
+          background-position: center !important;
+        }
+        .three-categories .second-category${categorySectionIdNumber} {
+          background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
+            url("${category2ImgUrl}") !important;
+          background-size: cover !important;
+          background-position: center !important;
+        }
+  
+        .three-categories .third-category${categorySectionIdNumber} {
+          background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1)),
+            url("${category3ImgUrl}") !important;
+          background-size: cover !important;
+          background-position: center !important;
+        }
+
+        /* start categories rtl override */
+        .two-categories .category__title,
+        .three-categories .category__title,
+        .four-categories .category__title {
+          padding: 4px 20px 4px 38px;
+          clip-path: polygon(0 0, 100% 0%, 100% 100%, 11% 100%);
+        }
+      /* end categories rtl override */
+  
+      </style>
+      <h2 class="sportLp__section-title">${sectionTitleInput}</h2>
+      <div class="three-categories">
+  
+        <div class="categories-container">
+          <a href="${category1ImgLinkUrl}">
+            <div class="category first-category first-category${categorySectionIdNumber}">
+              <div class="category-content">
+                <p class="category__title">${category1NameLabel}</p>
+              </div>
+            </div>
+          </a>
+          <a href="${category2ImgLinkUrl}">
+            <div class="category second-category second-category${categorySectionIdNumber}">
+              <div class="category-content">
+                <p class="category__title">${category2NameLabel}</p>
+              </div>
+            </div>
+          </a>
+          <a href="${category3ImgLinkUrl}">
+            <div class="category third-category third-category${categorySectionIdNumber}">
+              <div class="category-content">
+                <p class="category__title">${category3NameLabel}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <!-- end .categories-container -->
+       </div>
+      </div>
+      <div style="margin: 12px 0">&nbsp;</div>
+      <!-- ***************** END DISPLAY 3 CATEGORIES ***************** -->
+      `);
+    }
+
+    
   };
 
   // copy to clip func

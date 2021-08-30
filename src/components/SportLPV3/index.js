@@ -321,31 +321,37 @@ const SportLPV3 = (props) => {
                 imgUrl={screenshotOneshopSportpage}
                 open={openSportPageComponent}
                 handleClose={() => setOpenSportPageComponent(false)}
+                userDataObjFromSheet={props.userDataObjFromSheet} 
             />
             <Popup2Categories
                 imgUrl={screenshotTwoCategories}
                 open={open2CategoriesComponent}
                 handleClose={() => setOpen2CategoriesComponent(false)}
+                userDataObjFromSheet={props.userDataObjFromSheet}  
             />
             <Popup3Categories
                 imgUrl={screenshotThreeCategories}
-                open={open3CategoriesComponent}
+                open={open3CategoriesComponent} 
                 handleClose={() => setOpen3CategoriesComponent(false)}
+                userDataObjFromSheet={props.userDataObjFromSheet}  
             />
              <Popup4Categories
                 imgUrl={screenshotFourCategories}
                 open={open4CategoriesComponent}
                 handleClose={() => setOpen4CategoriesComponent(false)}
+                userDataObjFromSheet={props.userDataObjFromSheet}  
             />
              <PopupArticle1 
                 imgUrl={screenshotArticle1}
                 open={openArticle1Component}
                 handleClose={() => setOpenArticle1Component(false)}
+                userDataObjFromSheet={props.userDataObjFromSheet} 
             />
              <PopupBanner1
                 imgUrl={screenshotBanner1}
                 open={openBanner1Component}
                 handleClose={() => setOpenBanner1Component(false)}
+                userDataObjFromSheet={props.userDataObjFromSheet}
             />
            <PopupVideo
                 imgUrl={screenshotVideo}

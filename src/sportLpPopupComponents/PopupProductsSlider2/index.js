@@ -190,27 +190,96 @@ export default function PopupProductsSlider2(props) {
 
   const generateCodeFunc = () => {
     setGenerateCode(true);
-    setCodeOfComponent(`
-    <!-- ***************** START DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
 
-    
-    <div class="sportpage__content--box">
-    <link
-      rel="stylesheet"
-      href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider2.css"
-    />
+    if(props.userDataObjFromSheet.languageType === "LTR") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
   
-        <div class="products-slider2">
-          <!-- Swiper -->
-          <div class="swiper-container swiper-container__products-slider2 swiper-container__products-slider2__${sliderId}">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide products-slider2__swiper-slider">
-                <div class="products-slider2__swiper-sliderContainer">
-                  <div class="products-slider2__swiper-slider--left">
-                    <div class="products-slider2__img-container">
-                      <div class="products-slider2__img-price-label">
+      
+      <div class="sportpage__content--box">
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider2.css"
+      />
+    
+          <div class="products-slider2">
+            <!-- Swiper -->
+            <div class="swiper-container swiper-container__products-slider2 swiper-container__products-slider2__${sliderId}">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide products-slider2__swiper-slider">
+                  <div class="products-slider2__swiper-sliderContainer">
+                    <div class="products-slider2__swiper-slider--left">
+                      <div class="products-slider2__img-container">
+                        <div class="products-slider2__img-price-label">
+                          ${
+                            slider2Product1DisplayAbPriceBool === "yes"
+                              ? `
+                            <p class="products-slider2__img-price-label--ab">
+                              Ab
+                            </p>
+                            `
+                              : `
+                            <!--
+                            <p class="products-slider2__img-price-label--ab">
+                              Ab
+                            </p>
+                            -->
+                            `
+                          }
+                        
+  
+                          <div class="products-slider2__img-price-label--content">
+                            <p class="products-slider2__img-price-label--price">${slider2Product1PriceInteger}</p>
+                            <div
+                              class="products-slider2__img-price-label--deci-container"
+                            >
+                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${slider2Product1PriceDecimal}</span>
+                            </div>
+                          </div>
+                          <div
+                            class="products-slider2__img-price-label--additional-elem-background"
+                          >
+                             
+                          </div>
+                        </div>
+      
+                        <img
+                          src="${slider2Product1ImageSrc}"
+                          alt="${slider2Product1ImageAlt}"
+                        />
+                      </div>
+                    </div>
+                    <div class="products-slider2__swiper-slider--right">
+                      <h2 class="products-slider2__title">${slider2Product1Title}</h2>
+                      <ul class="products-slider2__list">
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product1Advantage1}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product1Advantage2}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product1Advantage3}
+                        </li>
+  
+                      </ul>
+                      <a href="${slider2Product1LinkUrl}" class="products-slider2__cta">
+                        <span> Zum Produkt </span>
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+        
+  
+                <div class="swiper-slide products-slider2__swiper-slider">
+                  <div class="products-slider2__swiper-sliderContainer">
+                    <div class="products-slider2__swiper-slider--left">
+                      <div class="products-slider2__img-container">
+                        <div class="products-slider2__img-price-label">
                         ${
-                          slider2Product1DisplayAbPriceBool === "yes"
+                          slider2Product2DisplayAbPriceBool === "yes"
                             ? `
                           <p class="products-slider2__img-price-label--ab">
                             Ab
@@ -224,146 +293,288 @@ export default function PopupProductsSlider2(props) {
                           -->
                           `
                         }
-                      
-
-                        <div class="products-slider2__img-price-label--content">
-                          <p class="products-slider2__img-price-label--price">${slider2Product1PriceInteger}</p>
+  
+                          <div class="products-slider2__img-price-label--content">
+                            <p class="products-slider2__img-price-label--price">${slider2Product2PriceInteger}</p>
+                            <div
+                              class="products-slider2__img-price-label--deci-container"
+                            >
+                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${slider2Product2PriceDecimal}</span>
+                            </div>
+                          </div>
                           <div
-                            class="products-slider2__img-price-label--deci-container"
+                            class="products-slider2__img-price-label--additional-elem-background"
                           >
-                            <span>${props.userDataObjFromSheet.currencySymbol}</span>
-                            <span>${slider2Product1PriceDecimal}</span>
+                             
                           </div>
                         </div>
-                        <div
-                          class="products-slider2__img-price-label--additional-elem-background"
-                        >
-                           
-                        </div>
+                        <img
+                          src="${slider2Product2ImageSrc}"
+                          alt="${slider2Product2ImageAlt}"
+                        />
                       </div>
-    
-                      <img
-                        src="${slider2Product1ImageSrc}"
-                        alt="${slider2Product1ImageAlt}"
-                      />
                     </div>
-                  </div>
-                  <div class="products-slider2__swiper-slider--right">
-                    <h2 class="products-slider2__title">${slider2Product1Title}</h2>
-                    <ul class="products-slider2__list">
-                      <li class="products-slider2__item">
-                        <i class="fas fa-check"></i>${slider2Product1Advantage1}
-                      </li>
-                      <li class="products-slider2__item">
-                        <i class="fas fa-check"></i>${slider2Product1Advantage2}
-                      </li>
-                      <li class="products-slider2__item">
-                        <i class="fas fa-check"></i>${slider2Product1Advantage3}
-                      </li>
-
-                    </ul>
-                    <a href="${slider2Product1LinkUrl}" class="products-slider2__cta">
-                      <span> Zum Produkt </span>
-                      <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
+                    <div class="products-slider2__swiper-slider--right">
+                      <h2 class="products-slider2__title">${slider2Product2Title}</h2>
+                      <ul class="products-slider2__list">
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product2Advantage1}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product2Advantage2}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product2Advantage3}
+                        </li>
       
-
-              <div class="swiper-slide products-slider2__swiper-slider">
-                <div class="products-slider2__swiper-sliderContainer">
-                  <div class="products-slider2__swiper-slider--left">
-                    <div class="products-slider2__img-container">
-                      <div class="products-slider2__img-price-label">
-                      ${
-                        slider2Product2DisplayAbPriceBool === "yes"
-                          ? `
-                        <p class="products-slider2__img-price-label--ab">
-                          Ab
-                        </p>
-                        `
-                          : `
-                        <!--
-                        <p class="products-slider2__img-price-label--ab">
-                          Ab
-                        </p>
-                        -->
-                        `
-                      }
-
-                        <div class="products-slider2__img-price-label--content">
-                          <p class="products-slider2__img-price-label--price">${slider2Product2PriceInteger}</p>
-                          <div
-                            class="products-slider2__img-price-label--deci-container"
-                          >
-                            <span>${props.userDataObjFromSheet.currencySymbol}</span>
-                            <span>${slider2Product2PriceDecimal}</span>
-                          </div>
-                        </div>
-                        <div
-                          class="products-slider2__img-price-label--additional-elem-background"
-                        >
-                           
-                        </div>
-                      </div>
-                      <img
-                        src="${slider2Product2ImageSrc}"
-                        alt="${slider2Product2ImageAlt}"
-                      />
+                      </ul>
+                      <a href="${slider2Product2LinkUrl}" class="products-slider2__cta">
+                        <span> Zum Produkt </span>
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                      </a>
                     </div>
-                  </div>
-                  <div class="products-slider2__swiper-slider--right">
-                    <h2 class="products-slider2__title">${slider2Product2Title}</h2>
-                    <ul class="products-slider2__list">
-                      <li class="products-slider2__item">
-                        <i class="fas fa-check"></i>${slider2Product2Advantage1}
-                      </li>
-                      <li class="products-slider2__item">
-                        <i class="fas fa-check"></i>${slider2Product2Advantage2}
-                      </li>
-                      <li class="products-slider2__item">
-                        <i class="fas fa-check"></i>${slider2Product2Advantage3}
-                      </li>
-    
-                    </ul>
-                    <a href="${slider2Product2LinkUrl}" class="products-slider2__cta">
-                      <span> Zum Produkt </span>
-                      <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    </a>
                   </div>
                 </div>
               </div>
+              <!-- Add Arrows -->
+   
+              <div class="products-slider2__next-btn products-slider2__next-btn${sliderId}">
+                <i class="fas fa-chevron-circle-right"></i>
+              </div>
+              <div class="products-slider2__prev-btn products-slider2__prev-btn${sliderId}">
+                <i class="fas fa-chevron-circle-left"></i>
+              </div>
             </div>
-            <!-- Add Arrows -->
- 
-            <div class="products-slider2__next-btn products-slider2__next-btn${sliderId}">
-              <i class="fas fa-chevron-circle-right"></i>
-            </div>
-            <div class="products-slider2__prev-btn products-slider2__prev-btn${sliderId}">
-              <i class="fas fa-chevron-circle-left"></i>
-            </div>
+      
+            <!-- Swiper JS -->
+            <script src="../package/swiper-bundle.min.js"></script>
+      
+            <!-- Initialize Swiper -->
+            <script>
+              var swiper${sliderId} = new Swiper(".swiper-container__products-slider2__${sliderId}", {
+                navigation: {
+                  nextEl: ".products-slider2__next-btn${sliderId}",
+                  prevEl: ".products-slider2__prev-btn${sliderId}",
+                },
+                loop: true,
+              });
+            </script>
+           </div>
           </div>
+          <div style="margin: 12px 0"> </div>
+          <!-- ***************** END DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
+      
+      `);
+    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+      setCodeOfComponent(`
+      <!-- ***************** START DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
+  
+      
+      <div class="sportpage__content--box">
+      <link
+        rel="stylesheet"
+        href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider2.css"
+      />
+      <style>
+      /* START RTL OVERRDIE STYLES */
+      .products-slider2__img-price-label--content {
+        flex-direction: row-reverse;
+      }
+      .products-slider2__img-price-label--ab {
+          text-align: right;
+      }
+      .products-slider2__item {
+          text-align: right;
+          margin-right: 0;
+          padding-right: 6px;
+          width: 80%;
+      }
+      .products-slider2__list {
+          padding-right: 0;
+      }
+      .products-slider2__item i {
+          margin-left: 4px;
+          margin-right: 0;
+      }
+      .products-slider1__display-category-btn p i {
+          left: 4%;
+          right: auto;
+      }
+      .products-slider2__cta i {
+          left: 4%;
+          right: auto;
+      }
+    /* END RTL OVERRDIE STYLES */
+      </style>
     
-          <!-- Swiper JS -->
-          <script src="../package/swiper-bundle.min.js"></script>
+          <div class="products-slider2">
+            <!-- Swiper -->
+            <div class="swiper-container swiper-container__products-slider2 swiper-container__products-slider2__${sliderId}">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide products-slider2__swiper-slider">
+                  <div class="products-slider2__swiper-sliderContainer">
+                    <div class="products-slider2__swiper-slider--left">
+                      <div class="products-slider2__img-container">
+                        <div class="products-slider2__img-price-label">
+                          ${
+                            slider2Product1DisplayAbPriceBool === "yes"
+                              ? `
+                            <p class="products-slider2__img-price-label--ab">
+                              Ab
+                            </p>
+                            `
+                              : `
+                            <!--
+                            <p class="products-slider2__img-price-label--ab">
+                              Ab
+                            </p>
+                            -->
+                            `
+                          }
+                        
+  
+                          <div class="products-slider2__img-price-label--content">
+                            <p class="products-slider2__img-price-label--price">${slider2Product1PriceInteger}</p>
+                            <div
+                              class="products-slider2__img-price-label--deci-container"
+                            >
+                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${slider2Product1PriceDecimal}</span>
+                            </div>
+                          </div>
+                          <div
+                            class="products-slider2__img-price-label--additional-elem-background"
+                          >
+                             
+                          </div>
+                        </div>
+      
+                        <img
+                          src="${slider2Product1ImageSrc}"
+                          alt="${slider2Product1ImageAlt}"
+                        />
+                      </div>
+                    </div>
+                    <div class="products-slider2__swiper-slider--right">
+                      <h2 class="products-slider2__title">${slider2Product1Title}</h2>
+                      <ul class="products-slider2__list">
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product1Advantage1}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product1Advantage2}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product1Advantage3}
+                        </li>
+  
+                      </ul>
+                      <a href="${slider2Product1LinkUrl}" class="products-slider2__cta">
+                        <span> Zum Produkt </span>
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+        
+  
+                <div class="swiper-slide products-slider2__swiper-slider">
+                  <div class="products-slider2__swiper-sliderContainer">
+                    <div class="products-slider2__swiper-slider--left">
+                      <div class="products-slider2__img-container">
+                        <div class="products-slider2__img-price-label">
+                        ${
+                          slider2Product2DisplayAbPriceBool === "yes"
+                            ? `
+                          <p class="products-slider2__img-price-label--ab">
+                            Ab
+                          </p>
+                          `
+                            : `
+                          <!--
+                          <p class="products-slider2__img-price-label--ab">
+                            Ab
+                          </p>
+                          -->
+                          `
+                        }
+  
+                          <div class="products-slider2__img-price-label--content">
+                            <p class="products-slider2__img-price-label--price">${slider2Product2PriceInteger}</p>
+                            <div
+                              class="products-slider2__img-price-label--deci-container"
+                            >
+                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${slider2Product2PriceDecimal}</span>
+                            </div>
+                          </div>
+                          <div
+                            class="products-slider2__img-price-label--additional-elem-background"
+                          >
+                             
+                          </div>
+                        </div>
+                        <img
+                          src="${slider2Product2ImageSrc}"
+                          alt="${slider2Product2ImageAlt}"
+                        />
+                      </div>
+                    </div>
+                    <div class="products-slider2__swiper-slider--right">
+                      <h2 class="products-slider2__title">${slider2Product2Title}</h2>
+                      <ul class="products-slider2__list">
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product2Advantage1}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product2Advantage2}
+                        </li>
+                        <li class="products-slider2__item">
+                          <i class="fas fa-check"></i>${slider2Product2Advantage3}
+                        </li>
+      
+                      </ul>
+                      <a href="${slider2Product2LinkUrl}" class="products-slider2__cta">
+                        <span> Zum Produkt </span>
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Add Arrows -->
+   
+              <div class="products-slider2__next-btn products-slider2__next-btn${sliderId}">
+                <i class="fas fa-chevron-circle-right"></i>
+              </div>
+              <div class="products-slider2__prev-btn products-slider2__prev-btn${sliderId}">
+                <i class="fas fa-chevron-circle-left"></i>
+              </div>
+            </div>
+      
+            <!-- Swiper JS -->
+            <script src="../package/swiper-bundle.min.js"></script>
+      
+            <!-- Initialize Swiper -->
+            <script>
+              var swiper${sliderId} = new Swiper(".swiper-container__products-slider2__${sliderId}", {
+                navigation: {
+                  nextEl: ".products-slider2__next-btn${sliderId}",
+                  prevEl: ".products-slider2__prev-btn${sliderId}",
+                },
+                loop: true,
+              });
+            </script>
+           </div>
+          </div>
+          <div style="margin: 12px 0"> </div>
+          <!-- ***************** END DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
+      
+      `);
+    }
+
     
-          <!-- Initialize Swiper -->
-          <script>
-            var swiper${sliderId} = new Swiper(".swiper-container__products-slider2__${sliderId}", {
-              navigation: {
-                nextEl: ".products-slider2__next-btn${sliderId}",
-                prevEl: ".products-slider2__prev-btn${sliderId}",
-              },
-              loop: true,
-            });
-          </script>
-         </div>
-        </div>
-        <div style="margin: 12px 0"> </div>
-        <!-- ***************** END DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
-    
-    `);
   };
 
   // copy to clip func
