@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PopupHpMainBanner(props) {
+export default function PopupBanner2(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 

@@ -149,13 +149,13 @@ const SportLPV3 = (props) => {
       title: 'Product slider',
       type: 'page component',
       onclick: () => setOpenProductsSlider1V2Component(true)
-    },
-    {
+    }
+   /* {
       img: codeImage,
       title: 'sport page v1 to v2',
       type: 'code converter',
       onclick: () => setOpenSportPageCodeConvertorV1ToV2(true)
-    }
+    }*/
     ]);
 
 

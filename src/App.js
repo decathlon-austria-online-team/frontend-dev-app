@@ -15,6 +15,7 @@ import SportLP from "./components/SportLP";
 import SportLPV2 from "./components/SportLPV2";
 import AddNewSportPageV2 from "./components/AddNewSportPageV2";
 import SportLPV3 from "./components/SportLPV3";
+import HpComponents from "./components/HpComponents";
 import HpComponentsPage from "./components/HpComponentsPage";
 import LoginPage from "./components/LoginPage";
 import Profile from "./components/Profile";
@@ -157,6 +158,9 @@ function App() {
 
                     <Route path="/create-new-sport-page">
                       <SportLPV3 userDataObjFromSheet={userDataObjFromSheet} />
+                    </Route>
+                    <Route path="/home-page-components">
+                      <HpComponents userDataObjFromSheet={userDataObjFromSheet} />
                     </Route>
                     <Route path="/profile">
                       <Profile />

@@ -34,7 +34,8 @@ const StyledTableCell = withStyles((theme) => ({
   }
   
   const rows = [
-    createData('sport page and page components for RIGHT TO LEFT languages', '30.08.2021'),
+    createData('home page banner 2 - display 6 categories (3 X 2)', '31.08.2021'),
+    createData('home page banner 1 - display 3 categories', '31.08.2021'),
     createData('creation of product slider with CSV file (google sheet template available)', '25.08.2021'),
     createData('creation of sport page with CSV file (google sheet template available)', '19.08.2021'),
   ];

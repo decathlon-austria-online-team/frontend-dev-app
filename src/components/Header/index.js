@@ -103,7 +103,7 @@ export default function Header(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
+//console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
   return (
     <div className="header">
       <div className={classes.root}>
@@ -192,7 +192,9 @@ console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
                 <ListItemText primary={text} />
               </ListItem>
                   ))*/}
-            <Link
+                  {
+                    /*
+              <Link
               to="/hp-components"
               style={{ textDecoration: "none", color: "#000000DE" }}
               onClick={handleDrawerClose}
@@ -201,7 +203,23 @@ console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
                 <ListItemIcon>
                   <ImportantDevicesIcon />
                 </ListItemIcon>
-                <ListItemText primary="Home Page" />
+                <ListItemText primary="HOME PAGE" />
+              </ListItem>
+            </Link>
+                    */
+                  }
+
+
+            <Link
+              to="/home-page-components"
+              style={{ textDecoration: "none", color: "#000000DE" }}
+              onClick={handleDrawerClose}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <ImportantDevicesIcon />
+                </ListItemIcon>
+                <ListItemText primary="HOME PAGE" />
               </ListItem>
             </Link>
 
@@ -214,7 +232,7 @@ console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
                 <ListItemIcon>
                   <SportsHandballIcon />
                 </ListItemIcon>
-                <ListItemText primary="Sport LP" />
+                <ListItemText primary="SPORT PAGE" />
               </ListItem>
             </Link>
             {/*
@@ -235,46 +253,7 @@ console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
           </List>
           <Divider />
         </Drawer>
-        {/*
-           <main
-          className={clsx(classes.content, {
-            [classes.contentShift]: open,
-          })}
-        >
-          <div className={classes.drawerHeader} />
-
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-            dolor purus non enim praesent elementum facilisis leo vel. Risus at
-            ultrices mi tempus imperdiet. Semper risus in hendrerit gravida
-            rutrum quisque non tellus. Convallis convallis tellus id interdum
-            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean
-            sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-            integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-            eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-            quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-            vivamus at augue. At augue eget arcu dictum varius duis at
-            consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-            donec massa sapien faucibus et molestie ac.
-          </Typography>
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-            ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-            elementum integer enim neque volutpat ac tincidunt. Ornare
-            suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
-            volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
-            Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
-            ornare massa eget egestas purus viverra accumsan in. In hendrerit
-            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
-            aliquam sem et tortor. Habitant morbi tristique senectus et.
-            Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
-            euismod elementum nisi quis eleifend. Commodo viverra maecenas
-            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-            ultrices sagittis orci a.
-          </Typography>
-        </main>
-          */}
+  
       </div>
     </div>
   );

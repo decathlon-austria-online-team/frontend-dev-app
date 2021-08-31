@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 
 const Home = (props) => {
-  console.log('userHasAllDataInSheetBool home: ', props.userHasAllDataInSheetBool);
+ // console.log('userHasAllDataInSheetBool home: ', props.userHasAllDataInSheetBool);
   return (
     <div className="home page">
       { 
