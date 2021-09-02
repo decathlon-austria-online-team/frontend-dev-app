@@ -387,7 +387,7 @@ crossorigin="anonymous"
             <p id="transition-modal-description">{props.text}</p>
             <div className="popupInputsContainer">
             <div style={{marginBottom: '35px'}}>
-              <p>Icons can be found on the site:<br></br> <a target="_blank" href="fontawesome.com">fontawesome.com</a></p>
+              <p>Icons can be found on the site:<br></br> <a target="_blank" href="https://fontawesome.com/">fontawesome.com</a></p>
             </div>
              
               <div className="popupInputsContainer__sectionWrapper">
