@@ -27,6 +27,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 // import images
 import screenshopHpBanner1 from "../../img/hp-banner1-desktop-and-mobile.png";
+import screenshopHpBanner3 from "../../img/banner3.png";
 
 
 
@@ -34,6 +35,7 @@ import screenshopHpBanner1 from "../../img/hp-banner1-desktop-and-mobile.png";
 // import popups components
 import PopupHpBanner1 from "../../hpPopupsComponents/PopupBanner1";
 import PopupHpBanner2 from "../../hpPopupsComponents/PopupBanner2";
+import PopupHpBanner3 from "../../hpPopupsComponents/PopupBanner3";
 
 
 const useStylesImgList = makeStyles((theme) => ({
@@ -77,6 +79,12 @@ const HpComponents = (props) => {
       title: 'Banner 2',
       type: 'display 6 categories (3 X 2)',
       onclick: () => setOpenHpBanner2(true)
+    },
+    {
+      img: screenshopHpBanner3,
+      title: 'Banner 3',
+      type: 'blue banner (text+icon X 3)',
+      onclick: () => setOpenHpBanner3(true)
     }
     ]);
 
@@ -93,6 +101,11 @@ const HpComponents = (props) => {
       const [
         openHpBanner2,
         setOpenHpBanner2,
+      ] = useState(false);
+
+      const [
+        openHpBanner3,
+        setOpenHpBanner3,
       ] = useState(false);
 
 
@@ -213,6 +226,12 @@ const HpComponents = (props) => {
               imgUrl={screenshopHpBanner1}
               open={openHpBanner2}
               handleClose={() => setOpenHpBanner2(false)}
+              userDataObjFromSheet={props.userDataObjFromSheet}
+        />
+            <PopupHpBanner3 
+              imgUrl={screenshopHpBanner3}
+              open={openHpBanner3}
+              handleClose={() => setOpenHpBanner3(false)}
               userDataObjFromSheet={props.userDataObjFromSheet}
         />
             

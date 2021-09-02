@@ -34,6 +34,7 @@ const StyledTableCell = withStyles((theme) => ({
   }
   
   const rows = [
+    createData('home page banner 3 - blue banner (text+icon X 3)', '02.09.2021'),
     createData('home page banner 2 - display 6 categories (3 X 2)', '31.08.2021'),
     createData('home page banner 1 - display 3 categories', '31.08.2021'),
     createData('creation of product slider with CSV file (google sheet template available)', '25.08.2021'),
