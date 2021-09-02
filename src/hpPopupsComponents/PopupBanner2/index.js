@@ -755,7 +755,7 @@ export default function PopupBanner2(props) {
       .left-side {
         flex: 1;
         background: linear-gradient(
-            to left,
+            to right,
             rgba(0, 72, 118, 0.1) 48%,
             rgba(0, 72, 118, 0.8) 
           ),
@@ -963,7 +963,7 @@ export default function PopupBanner2(props) {
           .left-side {
           flex: 1;
           background: linear-gradient(
-              to left,
+              to right,
               rgba(0, 72, 118, 0.1) 48%,
               rgba(0, 72, 118, 0.8) 
             ),
