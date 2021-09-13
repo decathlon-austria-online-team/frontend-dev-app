@@ -120,7 +120,7 @@ export default function PopupBanner1(props) {
     } else if(props.userDataObjFromSheet.languageType === "RTL") {
       setCodeOfComponent(`
       <!-- ***************** START DISPLAY BANNER1 ***************** -->
-      <div class="sportpage__content--box">
+      <div class="sportpage__content--box" dir="rtl">
       <div style="margin: 15px 0">&nbsp;</div>
       <link
         rel="stylesheet"
