@@ -11,7 +11,7 @@ import DoneIcon from "@material-ui/icons/Done";
 import copy from "copy-to-clipboard";
 
 // import papaparse:
-import { CSVReader } from 'react-papaparse';
+import { CSVReader } from "react-papaparse";
 const buttonRef = React.createRef();
 
 const useStyles = makeStyles((theme) => ({
@@ -44,22 +44,17 @@ export default function PopupProductsSlider1V2(props) {
     setOpen(false);
   };
 
-
-
-
-
-
-
   /* START NEW STATES OF PRODUCT SLIDER */
-  const [productDataDirectFromCsv, setProductDataDirectFromCsv] = useState(false);
+  const [productDataDirectFromCsv, setProductDataDirectFromCsv] =
+    useState(false);
   const [productDataArrReadyToMap, setProductDataArrReadyToMap] = useState([]);
-  const [idOfSliderComponent, setIdOfSliderComponent] = useState('');
-  const [sliderTitleName, setSliderTitleName] = useState('');
+  const [idOfSliderComponent, setIdOfSliderComponent] = useState("");
+  const [sliderTitleName, setSliderTitleName] = useState("");
   /* END NEW STATES OF PRODUCT SLIDER */
 
-    // code of component
-    const [generateCode, setGenerateCode] = useState(false);
-    const [codeOfComponent, setCodeOfComponent] = useState("");
+  // code of component
+  const [generateCode, setGenerateCode] = useState(false);
+  const [codeOfComponent, setCodeOfComponent] = useState("");
 
   // copy to clip func
   const [showSuccessCopied, setShowSuccessCopied] = useState(false);
@@ -72,88 +67,68 @@ export default function PopupProductsSlider1V2(props) {
     }, 2000);
   };
 
+  /* start papaparse functions */
+  const handleOpenDialog = (e) => {
+    // Note that the ref is set async, so it might be null at some point
+    if (buttonRef.current) {
+      buttonRef.current.open(e);
+    }
+  };
 
+  const handleOnFileLoad = (data) => {
+    console.log("---------------------------");
+    console.log(data);
+    setProductDataDirectFromCsv(data);
+    console.log("---------------------------");
+  };
 
-        /* start papaparse functions */
-        const handleOpenDialog = (e) => {
-            // Note that the ref is set async, so it might be null at some point
-            if (buttonRef.current) {
-              buttonRef.current.open(e)
-            }
-          }
-    
-          const handleOnFileLoad = (data) => {
-            console.log('---------------------------')
-            console.log(data);
-            setProductDataDirectFromCsv(data);
-            console.log('---------------------------')
-          }
-    
-          const handleOnError = (err, file, inputElem, reason) => {
-            console.log(err)
-          }    
-    
-    
-          const handleOnRemoveFile = (data) => {
-            console.log('---------------------------')
-            console.log(data)
-            console.log('---------------------------')
-          }
-        
-          const handleRemoveFile = (e) => {
-            // Note that the ref is set async, so it might be null at some point
-            if (buttonRef.current) {
-              buttonRef.current.removeFile(e)
-            }
-          }
-          /* end papaparse functions */
+  const handleOnError = (err, file, inputElem, reason) => {
+    console.log(err);
+  };
 
+  const handleOnRemoveFile = (data) => {
+    console.log("---------------------------");
+    console.log(data);
+    console.log("---------------------------");
+  };
 
-          const convertCsvDataToReadyArrToMap = () => {
-            let dataFromCsv = productDataDirectFromCsv;
-            let dataFromCsvArr = [];
-          
-           
-          
-            // convert dataFromCsv obj to array
-            for(let i = 0; i < dataFromCsv.length; i++) {
-               if(dataFromCsv[i] != undefined) {
-                 dataFromCsv[i] = dataFromCsv[i].data;
-                 dataFromCsvArr.push(dataFromCsv[i]);
-               }
-             }
-             dataFromCsvArr = dataFromCsvArr.slice(1);
-             console.log('dataFromCsvArr: ', dataFromCsvArr);
+  const handleRemoveFile = (e) => {
+    // Note that the ref is set async, so it might be null at some point
+    if (buttonRef.current) {
+      buttonRef.current.removeFile(e);
+    }
+  };
+  /* end papaparse functions */
 
+  const convertCsvDataToReadyArrToMap = () => {
+    let dataFromCsv = productDataDirectFromCsv;
+    let dataFromCsvArr = [];
 
-             // slice the not active products
-             for(let i = 0; i < dataFromCsvArr.length; i++) {
-                if(dataFromCsvArr[i] != undefined) {
-                    if(dataFromCsvArr[i][0] === "not active") {
-                        dataFromCsvArr.splice(i, 1);
-                    }
-                }
-             }
-             
-             setProductDataArrReadyToMap(dataFromCsvArr);
+    // convert dataFromCsv obj to array
+    for (let i = 0; i < dataFromCsv.length; i++) {
+      if (dataFromCsv[i] != undefined) {
+        dataFromCsv[i] = dataFromCsv[i].data;
+        dataFromCsvArr.push(dataFromCsv[i]);
+      }
+    }
+    dataFromCsvArr = dataFromCsvArr.slice(1);
 
- 
-          
-          
-            
-          }
-          //console.log('menuReadyDataToMap: ', menuReadyDataToMap);
-          useEffect(() => {
-            convertCsvDataToReadyArrToMap();
-          }, [productDataDirectFromCsv]);
+    //setProductDataArrReadyToMap(filterdActiveProductsArr);
+    // if (dataFromCsvArr != undefined) {
+    setProductDataArrReadyToMap(
+      dataFromCsvArr.filter((e) => e[0] != "not active")
+    );
+    //}
+  };
 
-
-
+  useEffect(() => {
+    convertCsvDataToReadyArrToMap();
+  }, [productDataDirectFromCsv]);
 
   const generateCodeFunc = () => {
     setGenerateCode(true);
 
-    if(props.userDataObjFromSheet.languageType === "LTR") {
+    if (props.userDataObjFromSheet.languageType === "LTR") {
       setCodeOfComponent(
         `
         <!-- ***************** START DISPLAY PRODUCTS SLIDER ID: ${idOfSliderComponent} ***************** -->
@@ -170,27 +145,38 @@ export default function PopupProductsSlider1V2(props) {
           <!-- Swiper -->
           <div class="swiper-container products-slider1__swiper-container products-slider1__swiper-container${idOfSliderComponent}">
             <div class="swiper-wrapper">
-            ${productDataArrReadyToMap.map((p, index) => (
-                `
-		         ${p[1] === "product" ? (
-                     `
+            ${productDataArrReadyToMap
+              .map(
+                (p, index) =>
+                  `
+		         ${
+               p[1] === "product"
+                 ? `
                      <div class="swiper-slide">
          
-                      ${p[3] === "yes" ? (
-                          `
-                        <div class="products-slider1__labelContainer" style="background-color: ${p[4] === "green" ? `#0DB14B` : p[4] === "red" ? `#E20C18` : p[4] === "orange" ? `#EC6607` : ``}">
+                      ${
+                        p[3] === "yes"
+                          ? `
+                        <div class="products-slider1__labelContainer" style="background-color: ${
+                          p[4] === "green"
+                            ? `#0DB14B`
+                            : p[4] === "red"
+                            ? `#E20C18`
+                            : p[4] === "orange"
+                            ? `#EC6607`
+                            : ``
+                        }">
                           <span>${p[5]}</span>
                         </div>
                           `
-                      ) : (
-                          `
+                          : `
                           <!--
                           <div class="products-slider1__labelContainer" style="background-color: #0DB14B">
                             <span></span>
                           </div>
                           -->
                           `
-                      )}
+                      }
 
                  <div class="products-slider1__imgContainer">
                    <a href="${p[10]}">
@@ -202,14 +188,15 @@ export default function PopupProductsSlider1V2(props) {
                  </div>
       
                  <div class="products-slider1__priceContainer">
-                 ${p[7] === "yes" ? 
-                 `
+                 ${
+                   p[7] === "yes"
+                     ? `
                  <span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>
-                 ` 
-                 : 
                  `
+                     : `
                  <!--<span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>-->
-                 `}
+                 `
+                 }
                 
                    
                    <span class="products-slider1__priceContainer--price"
@@ -227,8 +214,8 @@ export default function PopupProductsSlider1V2(props) {
                  </div>
                </div>
                      `
-                 ) : p[1] === "category" ? (
-                     `
+                 : p[1] === "category"
+                 ? `
                      <div class="swiper-slide">
                      <style>
                      .products-slider1__display-category${idOfSliderComponent}${index} {
@@ -247,9 +234,11 @@ export default function PopupProductsSlider1V2(props) {
                      </div>
                    </div>
                      `
-                 ) : ''}
+                 : ""
+             }
                 `
-            )).join('')}
+              )
+              .join("")}
              
             </div>
           </div>
@@ -302,8 +291,8 @@ export default function PopupProductsSlider1V2(props) {
         <!-- ***************** END DISPLAY PRODUCTS SLIDER ID: ${idOfSliderComponent} ***************** -->
         
             `
-    );
-    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+      );
+    } else if (props.userDataObjFromSheet.languageType === "RTL") {
       setCodeOfComponent(
         `
         <!-- ***************** START DISPLAY PRODUCTS SLIDER ID: ${idOfSliderComponent} ***************** -->
@@ -328,27 +317,38 @@ export default function PopupProductsSlider1V2(props) {
           <!-- Swiper -->
           <div class="swiper-container products-slider1__swiper-container products-slider1__swiper-container${idOfSliderComponent}">
             <div class="swiper-wrapper">
-            ${productDataArrReadyToMap.map((p, index) => (
-                `
-		         ${p[1] === "product" ? (
-                     `
+            ${productDataArrReadyToMap
+              .map(
+                (p, index) =>
+                  `
+		         ${
+               p[1] === "product"
+                 ? `
                      <div class="swiper-slide">
          
-                      ${p[3] === "yes" ? (
-                          `
-                        <div class="products-slider1__labelContainer" style="background-color: ${p[4] === "green" ? `#0DB14B` : p[4] === "red" ? `#E20C18` : p[4] === "orange" ? `#EC6607` : ``}">
+                      ${
+                        p[3] === "yes"
+                          ? `
+                        <div class="products-slider1__labelContainer" style="background-color: ${
+                          p[4] === "green"
+                            ? `#0DB14B`
+                            : p[4] === "red"
+                            ? `#E20C18`
+                            : p[4] === "orange"
+                            ? `#EC6607`
+                            : ``
+                        }">
                           <span>${p[5]}</span>
                         </div>
                           `
-                      ) : (
-                          `
+                          : `
                           <!--
                           <div class="products-slider1__labelContainer" style="background-color: #0DB14B">
                             <span></span>
                           </div>
                           -->
                           `
-                      )}
+                      }
 
                  <div class="products-slider1__imgContainer">
                    <a href="${p[10]}">
@@ -360,14 +360,15 @@ export default function PopupProductsSlider1V2(props) {
                  </div>
       
                  <div class="products-slider1__priceContainer">
-                 ${p[7] === "yes" ? 
-                 `
+                 ${
+                   p[7] === "yes"
+                     ? `
                  <span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>
-                 ` 
-                 : 
                  `
+                     : `
                  <!--<span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>-->
-                 `}
+                 `
+                 }
                 
                    
                    <span class="products-slider1__priceContainer--price"
@@ -385,8 +386,8 @@ export default function PopupProductsSlider1V2(props) {
                  </div>
                </div>
                      `
-                 ) : p[1] === "category" ? (
-                     `
+                 : p[1] === "category"
+                 ? `
                      <div class="swiper-slide">
                      <style>
                      .products-slider1__display-category${idOfSliderComponent}${index} {
@@ -405,9 +406,11 @@ export default function PopupProductsSlider1V2(props) {
                      </div>
                    </div>
                      `
-                 ) : ''}
+                 : ""
+             }
                 `
-            )).join('')}
+              )
+              .join("")}
              
             </div>
           </div>
@@ -460,10 +463,8 @@ export default function PopupProductsSlider1V2(props) {
         <!-- ***************** END DISPLAY PRODUCTS SLIDER ID: ${idOfSliderComponent} ***************** -->
         
             `
-    );
+      );
     }
-
-    
   };
   return (
     <div>
@@ -485,16 +486,13 @@ export default function PopupProductsSlider1V2(props) {
             <h2 id="transition-modal-title">{props.title}</h2>
             <p id="transition-modal-description">{props.text}</p>
             <div className="popupInputsContainer">
-
-      
-
-            <div className="popupInputsContainer__sectionWrapper">
-              <div className="popupInputsContainer__wrapper">
-              <small>
-                  Please give a section id name/number (this name/number should be unique
-                  only for this section in order to differentiate from the other
-                  sections on the page)
-                </small>
+              <div className="popupInputsContainer__sectionWrapper">
+                <div className="popupInputsContainer__wrapper">
+                  <small>
+                    Please give a section id name/number (this name/number
+                    should be unique only for this section in order to
+                    differentiate from the other sections on the page)
+                  </small>
                   <TextField
                     id="standard-basic"
                     label="slider id name/number"
@@ -503,73 +501,81 @@ export default function PopupProductsSlider1V2(props) {
                   />
                 </div>
                 <div className="popupInputsContainer__wrapper">
-                <TextField
+                  <TextField
                     id="standard-basic"
                     label="slider title"
                     style={{ width: "80%" }}
                     onChange={(e) => setSliderTitleName(e.target.value)}
                   />
                 </div>
-
               </div>
-                
-            
 
- 
-
-          
-            <div className="popupInputsContainer__sectionWrapper">
-            <div style={{marginBottom: '10px'}}>
-              <a style={{display: 'block', cursor: 'pointer', color: '#0082C3'}} href="https://docs.google.com/spreadsheets/d/121tt24m2xKFMBgdl0P0tbVpvJynsK8m4aspXv3yYb5o/edit?usp=sharing" target="_blank">Google Sheet Template</a>
-              <span style={{display: 'block', color: 'red', marginBottom: '16px'}}>Please make a copy and not edit the template! </span>
-            </div>
-            <div style={{marginBottom: '10px', maxWidth: '40%'}}>
-           
-                 <CSVReader
-                ref={buttonRef}
-                onFileLoad={handleOnFileLoad}
-                onError={handleOnError}
-                noClick
-                noDrag
-                onRemoveFile={handleOnRemoveFile}
-            >
-                {({ file }) => (
-                <aside
+              <div className="popupInputsContainer__sectionWrapper">
+                <div style={{ marginBottom: "10px" }}>
+                  <a
                     style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    marginBottom: 10
+                      display: "block",
+                      cursor: "pointer",
+                      color: "#0082C3",
                     }}
-                >
-                    <Button 
-                    style={{maxWidth: '50%'}}
-                    variant="contained"
-                    onClick={handleOpenDialog}
-                    >Upload CSV</Button>
-
-                    <div
+                    href="https://docs.google.com/spreadsheets/d/121tt24m2xKFMBgdl0P0tbVpvJynsK8m4aspXv3yYb5o/edit?usp=sharing"
+                    target="_blank"
+                  >
+                    Google Sheet Template
+                  </a>
+                  <span
                     style={{
-                        height: 45,
-                        lineHeight: 2.5,
-                        marginTop: 5,
-                        marginBottom: 5,
-                        paddingLeft: 13,
-                        paddingTop: 3,
-                        width: '60%'
+                      display: "block",
+                      color: "red",
+                      marginBottom: "16px",
                     }}
-                    >
-                    {file && file.name}
-                    </div>
+                  >
+                    Please make a copy and not edit the template!{" "}
+                  </span>
+                </div>
+                <div style={{ marginBottom: "10px", maxWidth: "40%" }}>
+                  <CSVReader
+                    ref={buttonRef}
+                    onFileLoad={handleOnFileLoad}
+                    onError={handleOnError}
+                    noClick
+                    noDrag
+                    onRemoveFile={handleOnRemoveFile}
+                  >
+                    {({ file }) => (
+                      <aside
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          marginBottom: 10,
+                        }}
+                      >
+                        <Button
+                          style={{ maxWidth: "50%" }}
+                          variant="contained"
+                          onClick={handleOpenDialog}
+                        >
+                          Upload CSV
+                        </Button>
 
-                </aside>
-                )}
-            </CSVReader>
-            </div>
-  
-        </div>
-           
-
-
+                        <div
+                          style={{
+                            height: 45,
+                            lineHeight: 2.5,
+                            marginTop: 5,
+                            marginBottom: 5,
+                            paddingLeft: 13,
+                            paddingTop: 3,
+                            width: "60%",
+                          }}
+                        >
+                          {file && file.name}
+                        </div>
+                      </aside>
+                    )}
+                  </CSVReader>
+                </div>
+              </div>
 
               <div className="popupInputsContainer__wrapper primary-button-container">
                 <Button
@@ -583,7 +589,6 @@ export default function PopupProductsSlider1V2(props) {
 
               {generateCode && (
                 <div>
-
                   <button
                     style={{ cursor: "pointer" }}
                     onClick={copyToClipFunc}
