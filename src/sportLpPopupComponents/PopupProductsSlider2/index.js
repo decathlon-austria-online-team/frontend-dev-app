@@ -61,18 +61,14 @@ export default function PopupProductsSlider2(props) {
     setSlider2Product1DisplayAbPriceBool(e.target.value);
   };
 
-  const [
-    slider2Product1PriceInteger,
-    setSlider2Product1PriceInteger,
-  ] = useState("");
+  const [slider2Product1PriceInteger, setSlider2Product1PriceInteger] =
+    useState("");
   const slider2Product1PriceIntegerHandleOnChange = (e) => {
     setSlider2Product1PriceInteger(e.target.value);
   };
 
-  const [
-    slider2Product1PriceDecimal,
-    setSlider2Product1PriceDecimal,
-  ] = useState("");
+  const [slider2Product1PriceDecimal, setSlider2Product1PriceDecimal] =
+    useState("");
   const slider2Product1PriceDecimalHandleOnChange = (e) => {
     setSlider2Product1PriceDecimal(e.target.value);
   };
@@ -92,23 +88,20 @@ export default function PopupProductsSlider2(props) {
     setSlider2Product1Title(e.target.value);
   };
 
-  const [slider2Product1Advantage1, setSlider2Product1Advantage1] = useState(
-    ""
-  );
+  const [slider2Product1Advantage1, setSlider2Product1Advantage1] =
+    useState("");
   const slider2Product1Advantage1HandleOnChange = (e) => {
     setSlider2Product1Advantage1(e.target.value);
   };
 
-  const [slider2Product1Advantage2, setSlider2Product1Advantage2] = useState(
-    ""
-  );
+  const [slider2Product1Advantage2, setSlider2Product1Advantage2] =
+    useState("");
   const slider2Product1Advantage2HandleOnChange = (e) => {
     setSlider2Product1Advantage2(e.target.value);
   };
 
-  const [slider2Product1Advantage3, setSlider2Product1Advantage3] = useState(
-    ""
-  );
+  const [slider2Product1Advantage3, setSlider2Product1Advantage3] =
+    useState("");
   const slider2Product1Advantage3HandleOnChange = (e) => {
     setSlider2Product1Advantage3(e.target.value);
   };
@@ -127,18 +120,14 @@ export default function PopupProductsSlider2(props) {
     setSlider2Product2DisplayAbPriceBool(e.target.value);
   };
 
-  const [
-    slider2Product2PriceInteger,
-    setSlider2Product2PriceInteger,
-  ] = useState("");
+  const [slider2Product2PriceInteger, setSlider2Product2PriceInteger] =
+    useState("");
   const slider2Product2PriceIntegerHandleOnChange = (e) => {
     setSlider2Product2PriceInteger(e.target.value);
   };
 
-  const [
-    slider2Product2PriceDecimal,
-    setSlider2Product2PriceDecimal,
-  ] = useState("");
+  const [slider2Product2PriceDecimal, setSlider2Product2PriceDecimal] =
+    useState("");
   const slider2Product2PriceDecimalHandleOnChange = (e) => {
     setSlider2Product2PriceDecimal(e.target.value);
   };
@@ -158,23 +147,20 @@ export default function PopupProductsSlider2(props) {
     setSlider2Product2Title(e.target.value);
   };
 
-  const [slider2Product2Advantage1, setSlider2Product2Advantage1] = useState(
-    ""
-  );
+  const [slider2Product2Advantage1, setSlider2Product2Advantage1] =
+    useState("");
   const slider2Product2Advantage1HandleOnChange = (e) => {
     setSlider2Product2Advantage1(e.target.value);
   };
 
-  const [slider2Product2Advantage2, setSlider2Product2Advantage2] = useState(
-    ""
-  );
+  const [slider2Product2Advantage2, setSlider2Product2Advantage2] =
+    useState("");
   const slider2Product2Advantage2HandleOnChange = (e) => {
     setSlider2Product2Advantage2(e.target.value);
   };
 
-  const [slider2Product2Advantage3, setSlider2Product2Advantage3] = useState(
-    ""
-  );
+  const [slider2Product2Advantage3, setSlider2Product2Advantage3] =
+    useState("");
   const slider2Product2Advantage3HandleOnChange = (e) => {
     setSlider2Product2Advantage3(e.target.value);
   };
@@ -191,7 +177,7 @@ export default function PopupProductsSlider2(props) {
   const generateCodeFunc = () => {
     setGenerateCode(true);
 
-    if(props.userDataObjFromSheet.languageType === "LTR") {
+    if (props.userDataObjFromSheet.languageType === "LTR") {
       setCodeOfComponent(`
       <!-- ***************** START DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
   
@@ -233,7 +219,9 @@ export default function PopupProductsSlider2(props) {
                             <div
                               class="products-slider2__img-price-label--deci-container"
                             >
-                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${
+                                props.userDataObjFromSheet.currencySymbol
+                              }</span>
                               <span>${slider2Product1PriceDecimal}</span>
                             </div>
                           </div>
@@ -299,7 +287,9 @@ export default function PopupProductsSlider2(props) {
                             <div
                               class="products-slider2__img-price-label--deci-container"
                             >
-                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${
+                                props.userDataObjFromSheet.currencySymbol
+                              }</span>
                               <span>${slider2Product2PriceDecimal}</span>
                             </div>
                           </div>
@@ -366,7 +356,7 @@ export default function PopupProductsSlider2(props) {
           <!-- ***************** END DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
       
       `);
-    } else if(props.userDataObjFromSheet.languageType === "RTL") {
+    } else if (props.userDataObjFromSheet.languageType === "RTL") {
       setCodeOfComponent(`
       <!-- ***************** START DISPLAY PRODUCTS SLIDER2 (advantages slider) ***************** -->
   
@@ -439,7 +429,9 @@ export default function PopupProductsSlider2(props) {
                             <div
                               class="products-slider2__img-price-label--deci-container"
                             >
-                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${
+                                props.userDataObjFromSheet.currencySymbol
+                              }</span>
                               <span>${slider2Product1PriceDecimal}</span>
                             </div>
                           </div>
@@ -505,7 +497,9 @@ export default function PopupProductsSlider2(props) {
                             <div
                               class="products-slider2__img-price-label--deci-container"
                             >
-                              <span>${props.userDataObjFromSheet.currencySymbol}</span>
+                              <span>${
+                                props.userDataObjFromSheet.currencySymbol
+                              }</span>
                               <span>${slider2Product2PriceDecimal}</span>
                             </div>
                           </div>
@@ -573,8 +567,6 @@ export default function PopupProductsSlider2(props) {
       
       `);
     }
-
-    
   };
 
   // copy to clip func
@@ -614,14 +606,14 @@ export default function PopupProductsSlider2(props) {
                   Slider Id Number:
                 </p>
                 <small>
-                  Please give a slider id name/number (this name/number should be unique
-                  only for this slider in order to differentiate from the other
-                  sliders on the page)
+                  Please give a slider id name/number (this name/number should
+                  be unique only for this slider in order to differentiate from
+                  the other sliders on the page)
                 </small>
                 <div className="popupInputsContainer__wrapper">
                   <TextField
                     id="standard-basic"
-                    label="slider id number"
+                    label="slider id number (without spaces!)"
                     style={{ width: "80%" }}
                     onChange={sliderIdHandleOnChange}
                   />
