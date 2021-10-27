@@ -1,10 +1,8 @@
-
-
 import React from "react";
 import "./index.css";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer"; 
+import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -22,14 +20,13 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import SportsHandballIcon from "@material-ui/icons/SportsHandball";
 import ImportantDevicesIcon from "@material-ui/icons/ImportantDevices";
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import SettingsIcon from '@material-ui/icons/Settings';
-import ContactSupportIcon from '@material-ui/icons/ContactSupport';
-
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import SettingsIcon from "@material-ui/icons/Settings";
+import ContactSupportIcon from "@material-ui/icons/ContactSupport";
+import ImportExportIcon from "@mui/icons-material/ImportExport";
 
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-
 
 const drawerWidth = 240;
 
@@ -91,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header(props) {
-  const {logout} = useAuth0();
+  const { logout } = useAuth0();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -103,7 +100,7 @@ export default function Header(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-//console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
+  //console.log('props headwerr has boll: ', props.userHasAllDataInSheetBool);
   return (
     <div className="header">
       <div className={classes.root}>
@@ -121,10 +118,17 @@ export default function Header(props) {
               onClick={handleDrawerOpen}
               edge="start"
               className={clsx(classes.menuButton, open && classes.hide)}
-            > 
+            >
               <MenuIcon />
             </IconButton>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%'}}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
               <Typography variant="h6" noWrap>
                 <Link
                   style={{
@@ -133,31 +137,32 @@ export default function Header(props) {
                     textTransform: "uppercase",
                   }}
                   to="/"
-                > 
+                >
                   Decathlon frontend dev app
                 </Link>
-              
-              </Typography> 
+              </Typography>
 
               <div className="header__icons-container">
-                <Link style={{color: '#fff'}} to="/profile">
-                  <AccountCircleIcon className='header__profile-icon' />
+                <Link style={{ color: "#fff" }} to="/profile">
+                  <AccountCircleIcon className="header__profile-icon" />
                 </Link>
-                <Link style={{color: '#fff'}} to="/settings">
-                  <SettingsIcon className={`header__profile-icon ${props.userHasAllDataInSheetBool === false ? 'settings-missing-animate' : ''}`} />
+                <Link style={{ color: "#fff" }} to="/settings">
+                  <SettingsIcon
+                    className={`header__profile-icon ${
+                      props.userHasAllDataInSheetBool === false
+                        ? "settings-missing-animate"
+                        : ""
+                    }`}
+                  />
                 </Link>
-                <Link style={{color: '#fff'}} to="/contact">
-                  <ContactSupportIcon className='header__profile-icon' />
+                <Link style={{ color: "#fff" }} to="/contact">
+                  <ContactSupportIcon className="header__profile-icon" />
                 </Link>
-                <button className="header__logout-btn" onClick={() => logout()}>logout</button>
+                <button className="header__logout-btn" onClick={() => logout()}>
+                  logout
+                </button>
               </div>
-              
-              
-            
-             
-              
             </div>
-
           </Toolbar>
         </AppBar>
         <Drawer
@@ -192,8 +197,7 @@ export default function Header(props) {
                 <ListItemText primary={text} />
               </ListItem>
                   ))*/}
-                  {
-                    /*
+            {/*
               <Link
               to="/hp-components"
               style={{ textDecoration: "none", color: "#000000DE" }}
@@ -206,9 +210,7 @@ export default function Header(props) {
                 <ListItemText primary="HOME PAGE" />
               </ListItem>
             </Link>
-                    */
-                  }
-
+                    */}
 
             <Link
               to="/home-page-components"
@@ -235,6 +237,20 @@ export default function Header(props) {
                 <ListItemText primary="SPORT PAGE" />
               </ListItem>
             </Link>
+
+            <Link
+              to="/merch-zones"
+              style={{ textDecoration: "none", color: "#000000DE" }}
+              onClick={handleDrawerClose}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <ImportExportIcon />
+                </ListItemIcon>
+                <ListItemText primary="MERCH ZONES" />
+              </ListItem>
+            </Link>
+
             {/*
                 <Link
               to="/create-new-sport-page"
@@ -249,11 +265,9 @@ export default function Header(props) {
               </ListItem>
             </Link>
             */}
-
           </List>
           <Divider />
         </Drawer>
-  
       </div>
     </div>
   );
