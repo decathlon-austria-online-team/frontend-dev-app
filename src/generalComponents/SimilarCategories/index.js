@@ -87,75 +87,85 @@ export default function SimilarCategories(props) {
       <!-- ******************* START CROSS LINKS COMPONENT ******************* -->
       <!-- ******** START MOBILE CODE ******** -->
       <style>
+      .manual-subcategories-menu-container {
+        padding: 20px;
+        display: block;
+        margin-top: -28px;
+        text-align: center;
+      }
+    
+      #similar-categories-icon {
+        margin-right: 8px;
+        display: inline-block;
+      }
+      #similar-categories-icon svg {
+        display: inline-block;
+        padding-top: 1.4px;
+        fill: #0082c3;
+      }
+    
+      .similar-categories-title {
+        color: #0082c3;
+        text-align: center;
+        font-size: 14px;
+        display: inline-block;
+        border: none;
+        outline: none;
+        background-color: #fff;
+      }
+      .similar-categories-title:hover,
+      .similar-categories-title:focus {
+        border: none;
+        outline: none;
+      }
+      .similar-categories-title:hover #similar-categories-icon {
+        transform: rotateZ(90deg);
+      }
+    
+      .manual-subcategories-menu {
+        /*display: flex;*/
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: auto;
+        margin-bottom: 40px;
+        max-width: 902px;
+        border: 1px solid #fff;
+        display: none;
+      }
+      .similar-categories-title:hover .manual-subcategories-menu {
+        display: flex;
+      }
+      .manual-subcategories-menu .manual-subcategories-menu-item {
+        margin: 20px 2px 10px;
+      }
+    
+      .manual-subcategories-menu .manual-subcategories-menu-item a {
+        margin-right: 10px;
+        padding: 10px 24px;
+        border-radius: 19px;
+        border: 1px solid #edeff1;
+        background-color: #fff;
+        width: auto;
+        height: auto;
+        text-align: center;
+        color: #575d5e;
+        font-size: 14px;
+        text-decoration: none;
+      }
+    
+      .manual-subcategories-menu .manual-subcategories-menu-item a:hover {
+        border-color: #0082c3;
+        color: #0082c3;
+      }
+    
+      @media (min-width: 1200px) {
         .manual-subcategories-menu-container {
-          padding: 20px;
-          display: block;
-          margin-top: -28px;
-        }
-      
-        #similar-categories-icon {
-          margin-right: 8px;
-          display: inline-block;
-        }
-        #similar-categories-icon svg {
-          display: inline-block;
-          padding-top: 1.4px;
-          fill: #0082c3;
-        }
-      
-        .similar-categories-title {
-          color: #0082c3;
-          text-align: center;
-          font-size: 14px;
-        }
-        .similar-categories-title:hover #similar-categories-icon {
-          transform: rotateZ(90deg);
-        }
-      
-        .manual-subcategories-menu {
-          /*display: flex;*/
-          flex-wrap: wrap;
-          justify-content: center;
-          margin: auto;
-          margin-bottom: 40px;
-          max-width: 902px;
-          border: 1px solid #fff;
           display: none;
         }
-        .similar-categories-title:hover + .manual-subcategories-menu {
-          display: flex;
-        }
-        .manual-subcategories-menu .manual-subcategories-menu-item {
-          margin: 20px 2px 10px;
-        }
-      
-        .manual-subcategories-menu .manual-subcategories-menu-item a {
-          margin-right: 10px;
-          padding: 10px 24px;
-          border-radius: 19px;
-          border: 1px solid #edeff1;
-          background-color: #fff;
-          width: auto;
-          height: auto;
-          text-align: center;
-          color: #575d5e;
-          font-size: 14px;
-          text-decoration: none;
-        }
-      
-        .manual-subcategories-menu .manual-subcategories-menu-item a:hover {
-          border-color: #0082c3;
-          color: #0082c3;
-        }
-      
-        @media (min-width: 1200px) {
-          .manual-subcategories-menu-container {
-            display: none;
-          }
-        }
-      </style>
+      }
+    </style>
       <div class="manual-subcategories-menu-container">
-        <div class="similar-categories-title">
+        <button class="similar-categories-title">
           <span id="similar-categories-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -176,20 +186,20 @@ export default function SimilarCategories(props) {
               ? "Similar categories"
               : valueOfOtherTitle
           }
-         
-        </div>
-        <div class="manual-subcategories-menu">
-        ${arrOfLinkUrlsAndLinkNamesObjs
-          .map(
-            (c, i) =>
-              `
-            <div class="manual-subcategories-menu-item">
-              <a href="${c.categoryUrl}">${c.categoryName}</a>
-            </div>
-              `
-          )
-          .join("")}
-        </div>
+          <div class="manual-subcategories-menu">
+          ${arrOfLinkUrlsAndLinkNamesObjs
+            .map(
+              (c, i) =>
+                `
+              <div class="manual-subcategories-menu-item">
+                <a href="${c.categoryUrl}">${c.categoryName}</a>
+              </div>
+                `
+            )
+            .join("")}
+          </div>
+        </button>
+
       </div>
       <!-- ******** END MOBILE CODE ******** -->
       
