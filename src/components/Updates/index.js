@@ -34,6 +34,10 @@ function createData(update, date) {
 }
 
 const rows = [
+  createData(
+    "products slider with variants (Austria) - sport page",
+    "16.11.2021"
+  ),
   createData("cross links - merchandasing zones", "27.10.2021"),
   createData("home page banner 3 - blue banner (text+icon X 3)", "02.09.2021"),
   createData("home page banner 2 - display 6 categories (3 X 2)", "31.08.2021"),
