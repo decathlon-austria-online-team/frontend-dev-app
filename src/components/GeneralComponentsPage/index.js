@@ -28,7 +28,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import screenshotSimilarCategories from "../../img/similar-categories-screenshots.png";
 
 // import popups components
-import SimilarCategories from "../../generalComponents/SimilarCategories";
+import GroupModalCodes from "../../generalComponents/GroupModalCodes";
 
 const useStylesImgList = makeStyles((theme) => ({
   root: {
@@ -55,16 +55,17 @@ const GeneralComponentsPage = (props) => {
   const [imgData, setImgData] = useState([
     {
       img: screenshotSimilarCategories,
-      title: "Cross links",
-      type: "top merch zone",
-      onclick: () => setOpenSimilarCategories(true),
+      title: "Group modal code ",
+      type: "general component",
+      onclick: () => setOpenGroupModelCode(true),
     },
   ]);
 
   const [getMainCode, setGetMainCode] = useState("");
 
   // open/close popup states
-  const [openSimilarCategories, setOpenSimilarCategories] = useState(false);
+
+  const [openGroupModalCode, setOpenGroupModelCode] = useState(false);
 
   // GENERAL STATES:
   const [codeEditorModeFull, setCodeEditorModeFull] = useState(false);
@@ -87,7 +88,7 @@ const GeneralComponentsPage = (props) => {
   return (
     <div className="sportLPV3 page">
       <Typography variant="h3" component="h2" gutterBottom className="title">
-        merch zones
+        general
       </Typography>
 
       <div className="sportLPV3__content">
@@ -196,10 +197,10 @@ const GeneralComponentsPage = (props) => {
       </div>
 
       <div className="sportLPV3__popups">
-        <SimilarCategories
+        <GroupModalCodes
           imgUrl={screenshotSimilarCategories}
-          open={openSimilarCategories}
-          handleClose={() => setOpenSimilarCategories(false)}
+          open={openGroupModalCode}
+          handleClose={() => setOpenGroupModelCode(false)}
           userDataObjFromSheet={props.userDataObjFromSheet}
         />
       </div>

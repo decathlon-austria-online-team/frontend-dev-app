@@ -1,0 +1,9 @@
+.group-modalcodes__product {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.group-modalcodes__product-img img {
+  width: 110px;
+}

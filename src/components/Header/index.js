@@ -24,6 +24,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ContactSupportIcon from "@material-ui/icons/ContactSupport";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
+import LocalPlayIcon from "@mui/icons-material/LocalPlay";
 
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -155,9 +156,12 @@ export default function Header(props) {
                     }`}
                   />
                 </Link>
-                <Link style={{ color: "#fff" }} to="/contact">
+                {/*
+                 <Link style={{ color: "#fff" }} to="/contact">
                   <ContactSupportIcon className="header__profile-icon" />
                 </Link>
+                */}
+
                 <button className="header__logout-btn" onClick={() => logout()}>
                   logout
                 </button>
@@ -185,33 +189,6 @@ export default function Header(props) {
           </div>
           <Divider />
           <List>
-            {/*["Home Page", "Sport Page"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index === 0 ? (
-                    <ImportantDevicesIcon />
-                  ) : index === 1 ? (
-                    <SportsHandballIcon />
-                  ) : null}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-                  ))*/}
-            {/*
-              <Link
-              to="/hp-components"
-              style={{ textDecoration: "none", color: "#000000DE" }}
-              onClick={handleDrawerClose}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <ImportantDevicesIcon />
-                </ListItemIcon>
-                <ListItemText primary="HOME PAGE" />
-              </ListItem>
-            </Link>
-                    */}
-
             <Link
               to="/home-page-components"
               style={{ textDecoration: "none", color: "#000000DE" }}
@@ -250,6 +227,21 @@ export default function Header(props) {
                 <ListItemText primary="MERCH ZONES" />
               </ListItem>
             </Link>
+
+            {/*
+            <Link
+              to="/general-components"
+              style={{ textDecoration: "none", color: "#000000DE" }}
+              onClick={handleDrawerClose}
+            >
+              <ListItem button>
+                <ListItemIcon>
+                  <LocalPlayIcon />
+                </ListItemIcon>
+                <ListItemText primary="GENERAL" />
+              </ListItem>
+            </Link>
+              */}
 
             {/*
                 <Link

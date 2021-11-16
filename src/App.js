@@ -15,6 +15,7 @@ import SportLP from "./components/SportLP";
 import SportLPV2 from "./components/SportLPV2";
 import AddNewSportPageV2 from "./components/AddNewSportPageV2";
 import SportLPV3 from "./components/SportLPV3";
+import MerchZonesComponentsPage from "./components/MerchZonesComponentsPage";
 import GeneralComponentsPage from "./components/GeneralComponentsPage";
 import HpComponents from "./components/HpComponents";
 import HpComponentsPage from "./components/HpComponentsPage";
@@ -55,7 +56,6 @@ function App() {
   const checkIfUserInUsersCollection = () => {
     if (usersDataFromSheet.length > 0) {
       if (usersDataFromSheet.some((u) => u.email === user.email)) {
-        console.log("yess we have this email!");
         setUserEmailFitOneOfEmailsInSheetBool(true);
         const getUserObj = usersDataFromSheet.find(
           (el) => el.email === user.email
@@ -76,7 +76,6 @@ function App() {
           setUserHasAllDataInSheetBool(true);
         }
       } else {
-        console.log("noo we couldnt find this email!");
       }
     }
   };
@@ -160,6 +159,11 @@ function App() {
                         />
                       </Route>
                       <Route path="/merch-zones">
+                        <MerchZonesComponentsPage
+                          userDataObjFromSheet={userDataObjFromSheet}
+                        />
+                      </Route>
+                      <Route path="/general-components">
                         <GeneralComponentsPage
                           userDataObjFromSheet={userDataObjFromSheet}
                         />

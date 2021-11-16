@@ -50,6 +50,7 @@ export default function PopupProductsSlider1V2(props) {
   const [productDataArrReadyToMap, setProductDataArrReadyToMap] = useState([]);
   const [idOfSliderComponent, setIdOfSliderComponent] = useState("");
   const [sliderTitleName, setSliderTitleName] = useState("");
+
   /* END NEW STATES OF PRODUCT SLIDER */
 
   // code of component
@@ -118,6 +119,7 @@ export default function PopupProductsSlider1V2(props) {
     setProductDataArrReadyToMap(
       dataFromCsvArr.filter((e) => e[0] != "not active")
     );
+
     //}
   };
 
@@ -139,6 +141,30 @@ export default function PopupProductsSlider1V2(props) {
         rel="stylesheet"
         href="https://decathlon-source.eu/frontend/sport-pages/code-files/components/product-slider1-oneshop.css"
       />
+      <style>
+        /* START VARIANTS STYLES */
+        .products-slider1__imgContainer-variants {
+          display: flex;
+          flex-direction: row-reverse;
+          align-items: flex-start;
+          justify-content: center;
+          margin-top: 31px !important;
+        }
+        .products-slider1__img-variants {
+          /*border: 1px solid #eee;*/
+          padding: 2px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .products-slider1__img-variants img {
+          width: 45px !important;
+          margin: 4px 0 !important;
+          cursor: pointer;
+        }
+        /* END VARIANTS STYLES */
+      </style>
   
         <h2 class="sportLp__section-title">${sliderTitleName}</h2>
         <div class="products-slider1">
@@ -234,6 +260,90 @@ export default function PopupProductsSlider1V2(props) {
                      </div>
                    </div>
                      `
+                 : p[1] === "product-with-variants"
+                 ? `
+                <div class="swiper-slide">
+         
+                ${
+                  p[3] === "yes"
+                    ? `
+                  <div class="products-slider1__labelContainer" style="background-color: ${
+                    p[4] === "green"
+                      ? `#0DB14B`
+                      : p[4] === "red"
+                      ? `#E20C18`
+                      : p[4] === "orange"
+                      ? `#EC6607`
+                      : ``
+                  }">
+                    <span>${p[5]}</span>
+                  </div>
+                    `
+                    : `
+                    <!--
+                    <div class="products-slider1__labelContainer" style="background-color: #0DB14B">
+                      <span></span>
+                    </div>
+                    -->
+                    `
+                }
+
+           <div class="products-slider1__imgContainer products-slider1__imgContainer-variants">
+           <div>
+             <a href="${p[10]}">
+               <img
+                 alt="${p[12]}"
+                 src="${p[9]}"
+               />
+             </a>
+            </div>
+            <div class="products-slider1__img-variants">
+            ${[...Array((p.length - 16) / 2)]
+              .map(
+                (nomeaning, i) =>
+                  `
+              <a
+              href="${p[17 + i * 2]}"
+            >
+              <img
+                alt="${p[12]}"
+                src="${p[16 + i * 2]}"
+              />
+            </a>
+              `
+              )
+              .join("")}
+
+          </div>
+           </div>
+
+           <div class="products-slider1__priceContainer">
+           ${
+             p[7] === "yes"
+               ? `
+           <span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>
+           `
+               : `
+           <!--<span class="products-slider1__priceContainer--ab-price" style="text-align: left;">${p[8]}</span>-->
+           `
+           }
+          
+             
+             <span class="products-slider1__priceContainer--price"
+               >${props.userDataObjFromSheet.currencySymbol}${p[6]}</span
+             >
+           </div>
+
+           <div class="products-slider1__info">
+             <div class="products-slider1__nameContainer">
+               <span>${p[11]}zzz</span>
+             </div>
+             <div class="products-slider1__brandContainer">
+               <span>${p[12]}</span>
+             </div>
+           </div>
+         </div>
+                `
                  : ""
              }
                 `
