@@ -228,7 +228,6 @@ export default function Header(props) {
               </ListItem>
             </Link>
 
-            {/*
             <Link
               to="/general-components"
               style={{ textDecoration: "none", color: "#000000DE" }}
@@ -241,7 +240,6 @@ export default function Header(props) {
                 <ListItemText primary="GENERAL" />
               </ListItem>
             </Link>
-              */}
 
             {/*
                 <Link

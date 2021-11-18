@@ -1,9 +1,25 @@
 .group-modalcodes__product {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  /*align-items: flex-start;*/
+  border: 1px solid #eee;
+  margin-bottom: 20px;
+  padding: 22px;
+  text-align: left;
 }
 
+.group-modalcodes__product-img {
+  width: 30%;
+  /* border: 1px solid gray;*/
+}
 .group-modalcodes__product-img img {
-  width: 110px;
+  width: 100px;
+}
+.group-modalcodes__product-content {
+  width: 30%;
+  /*border: 1px solid gray;*/
+}
+.group-modalcodes__product-supermodal-codes {
+  width: 30%;
+  /*border: 1px solid gray;*/
 }

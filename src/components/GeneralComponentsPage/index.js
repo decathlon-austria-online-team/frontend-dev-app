@@ -26,6 +26,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 // import images
 import screenshotSimilarCategories from "../../img/similar-categories-screenshots.png";
+import screenshotGroupModalCodes from "../../img/group-modal-codes-component.PNG";
 
 // import popups components
 import GroupModalCodes from "../../generalComponents/GroupModalCodes";
@@ -54,8 +55,8 @@ const GeneralComponentsPage = (props) => {
   const classesImgList = useStylesImgList();
   const [imgData, setImgData] = useState([
     {
-      img: screenshotSimilarCategories,
-      title: "Group modal code ",
+      img: screenshotGroupModalCodes,
+      title: "Group modal codes ",
       type: "general component",
       onclick: () => setOpenGroupModelCode(true),
     },
@@ -198,7 +199,7 @@ const GeneralComponentsPage = (props) => {
 
       <div className="sportLPV3__popups">
         <GroupModalCodes
-          imgUrl={screenshotSimilarCategories}
+          imgUrl={screenshotGroupModalCodes}
           open={openGroupModalCode}
           handleClose={() => setOpenGroupModelCode(false)}
           userDataObjFromSheet={props.userDataObjFromSheet}
