@@ -27,9 +27,11 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 // import images
 import screenshotSimilarCategories from "../../img/similar-categories-screenshots.png";
 import screenshotGroupModalCodes from "../../img/group-modal-codes-component.PNG";
+import screenshotPrestashopApi from "../../img/prestashop-api.PNG";
 
 // import popups components
 import GroupModalCodes from "../../generalComponents/GroupModalCodes";
+import PrestaApi from "../../generalComponents/PrestaApi";
 
 const useStylesImgList = makeStyles((theme) => ({
   root: {
@@ -56,9 +58,15 @@ const GeneralComponentsPage = (props) => {
   const [imgData, setImgData] = useState([
     {
       img: screenshotGroupModalCodes,
-      title: "Group modal codes ",
+      title: "Group modal codes",
       type: "general component",
       onclick: () => setOpenGroupModelCode(true),
+    },
+    {
+      img: screenshotPrestashopApi,
+      title: "Prestashop API - data",
+      type: "general component",
+      onclick: () => setOpenPrestaApi(true),
     },
   ]);
 
@@ -67,6 +75,7 @@ const GeneralComponentsPage = (props) => {
   // open/close popup states
 
   const [openGroupModalCode, setOpenGroupModelCode] = useState(false);
+  const [openPrestaApi, setOpenPrestaApi] = useState(false);
 
   // GENERAL STATES:
   const [codeEditorModeFull, setCodeEditorModeFull] = useState(false);
@@ -202,6 +211,12 @@ const GeneralComponentsPage = (props) => {
           imgUrl={screenshotGroupModalCodes}
           open={openGroupModalCode}
           handleClose={() => setOpenGroupModelCode(false)}
+          userDataObjFromSheet={props.userDataObjFromSheet}
+        />
+        <PrestaApi
+          imgUrl={screenshotPrestashopApi}
+          open={openPrestaApi}
+          handleClose={() => setOpenPrestaApi(false)}
           userDataObjFromSheet={props.userDataObjFromSheet}
         />
       </div>
