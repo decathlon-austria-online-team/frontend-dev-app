@@ -29,6 +29,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+/* --- */
+import AddchartIcon from "@mui/icons-material/Addchart";
+import CelebrationIcon from "@mui/icons-material/Celebration";
+import EmojiNatureIcon from "@mui/icons-material/EmojiNature";
+import HikingIcon from "@mui/icons-material/Hiking";
+import KayakingIcon from "@mui/icons-material/Kayaking";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 /* --- */
 import copy from "copy-to-clipboard";
@@ -666,7 +673,7 @@ export default function PrestaApi(props) {
                   <MenuList>
                     <MenuItem onClick={suggestedProductsFunc}>
                       <ListItemIcon>
-                        <SendIcon fontSize="small" />
+                        <AddchartIcon fontSize="small" />
                       </ListItemIcon>
                       <Typography variant="inherit">
                         Suggested products
@@ -675,7 +682,7 @@ export default function PrestaApi(props) {
 
                     <MenuItem onClick={ecoDesignSuggestedProductsFunc}>
                       <ListItemIcon>
-                        <SendIcon fontSize="small" />
+                        <EmojiNatureIcon fontSize="small" />
                       </ListItemIcon>
                       <Typography variant="inherit">
                         Suggested eco-designed products
@@ -684,7 +691,7 @@ export default function PrestaApi(props) {
 
                     <MenuItem onClick={suggestedSportsFunc}>
                       <ListItemIcon>
-                        <SendIcon fontSize="small" />
+                        <HikingIcon fontSize="small" />
                       </ListItemIcon>
                       <Typography variant="inherit">
                         Suggested sports
@@ -693,7 +700,7 @@ export default function PrestaApi(props) {
 
                     <MenuItem onClick={mostPopularProductsFunc}>
                       <ListItemIcon>
-                        <SendIcon fontSize="small" />
+                        <CelebrationIcon fontSize="small" />
                       </ListItemIcon>
                       <Typography variant="inherit">
                         Most popular products
@@ -706,7 +713,7 @@ export default function PrestaApi(props) {
                       }
                     >
                       <ListItemIcon>
-                        <SendIcon fontSize="small" />
+                        <FavoriteIcon fontSize="small" />
                       </ListItemIcon>
                       <Typography variant="inherit">
                         Most popular products for a specific sport
@@ -727,6 +734,7 @@ export default function PrestaApi(props) {
                         marginBottom: "2px",
                         display: "block",
                         fontWeight: "bold",
+                        fontSize: "26px",
                       }}
                     >
                       Suggested products
@@ -735,7 +743,7 @@ export default function PrestaApi(props) {
                       {activeApiDescription}
                     </p>
                     <span style={{ marginBottom: "5px", display: "block" }}>
-                      count:{" "}
+                      Results:{" "}
                       {apiDataResultsSuggestedProducts &&
                         apiDataResultsSuggestedProducts.length}
                     </span>
@@ -746,7 +754,8 @@ export default function PrestaApi(props) {
                             padding: "10px",
                             marginBottom: "6px",
                             border: "1px solid #eee",
-                            color: "gray",
+                            color: "black",
+                            fontWeight: "bold",
                           }}
                         >
                           <p style={{ color: "lightgray" }}>{index + 1}</p>
@@ -769,6 +778,7 @@ export default function PrestaApi(props) {
                         marginBottom: "2px",
                         display: "block",
                         fontWeight: "bold",
+                        fontSize: "26px",
                       }}
                     >
                       Suggested eco-designed products
@@ -777,7 +787,7 @@ export default function PrestaApi(props) {
                       {activeApiDescription}
                     </p>
                     <span style={{ marginBottom: "5px", display: "block" }}>
-                      count: {apiDataResultsEcoDesignSuggestedProducts.length}
+                      Results: {apiDataResultsEcoDesignSuggestedProducts.length}
                     </span>
                     {apiDataResultsEcoDesignSuggestedProducts.length > 0 &&
                       apiDataResultsEcoDesignSuggestedProducts.map(
@@ -787,7 +797,8 @@ export default function PrestaApi(props) {
                               padding: "10px",
                               marginBottom: "6px",
                               border: "1px solid #eee",
-                              color: "gray",
+                              color: "black",
+                              fontWeight: "bold",
                             }}
                           >
                             <p style={{ color: "lightgray" }}>{index + 1}</p>
@@ -811,6 +822,7 @@ export default function PrestaApi(props) {
                         marginBottom: "2px",
                         display: "block",
                         fontWeight: "bold",
+                        fontSize: "26px",
                       }}
                     >
                       Suggested sports
@@ -819,7 +831,7 @@ export default function PrestaApi(props) {
                       {activeApiDescription}
                     </p>
                     <span style={{ marginBottom: "5px", display: "block" }}>
-                      count: {apiDataResultsSuggestedSprts.length}
+                      Results: {apiDataResultsSuggestedSprts.length}
                     </span>
                     {apiDataResultsSuggestedSprts.length > 0 &&
                       apiDataResultsSuggestedSprts.map((e, index) => (
@@ -828,7 +840,8 @@ export default function PrestaApi(props) {
                             padding: "10px",
                             marginBottom: "6px",
                             border: "1px solid #eee",
-                            color: "gray",
+                            color: "black",
+                            fontWeight: "bold",
                           }}
                         >
                           <p style={{ color: "lightgray" }}>{index + 1}</p>
@@ -846,6 +859,7 @@ export default function PrestaApi(props) {
                         marginBottom: "2px",
                         display: "block",
                         fontWeight: "bold",
+                        fontSize: "26px",
                       }}
                     >
                       Most popular products
@@ -854,7 +868,7 @@ export default function PrestaApi(props) {
                       {activeApiDescription}
                     </p>
                     <span style={{ marginBottom: "5px", display: "block" }}>
-                      count: {apiDataResultsMostPopularProducts.length}
+                      Results: {apiDataResultsMostPopularProducts.length}
                     </span>
                     {apiDataResultsMostPopularProducts.length > 0 &&
                       apiDataResultsMostPopularProducts.map((e, index) => (
@@ -863,7 +877,8 @@ export default function PrestaApi(props) {
                             padding: "10px",
                             marginBottom: "6px",
                             border: "1px solid #eee",
-                            color: "gray",
+                            color: "black",
+                            fontWeight: "bold",
                           }}
                         >
                           <p style={{ color: "lightgray" }}>{index + 1}</p>
@@ -881,6 +896,19 @@ export default function PrestaApi(props) {
                   </div>
                 ) : activeApi === "most-popular-products-specific-sport" ? (
                   <div>
+                    <span
+                      style={{
+                        marginBottom: "2px",
+                        display: "block",
+                        fontWeight: "bold",
+                        fontSize: "26px",
+                      }}
+                    >
+                      Most popular products for a specific sport
+                    </span>
+                    <p style={{ maxWidth: "90%", marginBottom: "12px" }}>
+                      {activeApiDescription}
+                    </p>
                     <p
                       style={{
                         color: "#0082C3",
@@ -892,7 +920,7 @@ export default function PrestaApi(props) {
                       onClick={() => setToggleSportIdsList(!toggleSportIdsList)}
                     >
                       {toggleSportIdsList ? (
-                        <span>Hide list of sport ID numbers</span>
+                        <span>Hide</span>
                       ) : (
                         <span>View list of sport ID numbers</span>
                       )}
@@ -913,7 +941,7 @@ export default function PrestaApi(props) {
                           >
                             <TableHead>
                               <TableRow>
-                                <TableCell>Sport Groups</TableCell>
+                                <TableCell>Sport groups</TableCell>
                                 <TableCell align="left">Label_en</TableCell>
                                 <TableCell align="left">
                                   Decathlon id number
@@ -989,26 +1017,14 @@ export default function PrestaApi(props) {
                         }}
                         onClick={mostPopularProductsSpecificSportFunc}
                       >
-                        Pull Data
+                        PULL DATA
                       </button>
                     </div>
                     {apiDataResultsMostPopularProductsSpecificSport.length >
                       0 && (
                       <div>
-                        <span
-                          style={{
-                            marginBottom: "2px",
-                            display: "block",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          Most popular products for a specific sport
-                        </span>
-                        <p style={{ maxWidth: "90%", marginBottom: "12px" }}>
-                          {activeApiDescription}
-                        </p>
                         <span style={{ marginBottom: "5px", display: "block" }}>
-                          count:{" "}
+                          Results:{" "}
                           {
                             apiDataResultsMostPopularProductsSpecificSport.length
                           }
@@ -1022,7 +1038,8 @@ export default function PrestaApi(props) {
                                   padding: "10px",
                                   marginBottom: "6px",
                                   border: "1px solid #eee",
-                                  color: "gray",
+                                  color: "black",
+                                  fontWeight: "bold",
                                 }}
                               >
                                 <p style={{ color: "lightgray" }}>

@@ -28,6 +28,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import screenshotSimilarCategories from "../../img/similar-categories-screenshots.png";
 import screenshotGroupModalCodes from "../../img/group-modal-codes-component.PNG";
 import screenshotPrestashopApi from "../../img/prestashop-api.PNG";
+import screenshotPrestashopApiV2 from "../../img/prestashop-api-v2.png";
 
 // import popups components
 import GroupModalCodes from "../../generalComponents/GroupModalCodes";
@@ -63,7 +64,7 @@ const GeneralComponentsPage = (props) => {
       onclick: () => setOpenGroupModelCode(true),
     },
     {
-      img: screenshotPrestashopApi,
+      img: screenshotPrestashopApiV2,
       title: "Prestashop API - data",
       type: "general component",
       onclick: () => setOpenPrestaApi(true),
@@ -214,7 +215,7 @@ const GeneralComponentsPage = (props) => {
           userDataObjFromSheet={props.userDataObjFromSheet}
         />
         <PrestaApi
-          imgUrl={screenshotPrestashopApi}
+          imgUrl={screenshotPrestashopApiV2}
           open={openPrestaApi}
           handleClose={() => setOpenPrestaApi(false)}
           userDataObjFromSheet={props.userDataObjFromSheet}
