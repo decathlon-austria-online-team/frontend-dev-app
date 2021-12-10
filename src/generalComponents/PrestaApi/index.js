@@ -759,15 +759,21 @@ export default function PrestaApi(props) {
                           }}
                         >
                           <p style={{ color: "lightgray" }}>{index + 1}</p>
-                          <p>mdl_num: {e.mdl_num}</p>
-                          <p>cnt_margin: {e.cnt_margin}</p>
-                          <p>cnt_qty: {e.cnt_qty}</p>
-                          <p>cnt_turnover: {e.cnt_turnover}</p>
-                          <p>number_clicks: {e.number_clicks}</p>
-                          <p>product_nature_id: {e.product_nature_id}</p>
-                          <p>qty_available_bu: {e.qty_available_bu}</p>
-                          <p>qty_available_wh: {e.qty_available_wh}</p>
-                          <p>sportgroup_id: {e.sportgroup_id}</p>
+                          <p>modal code: {e.mdl_num}</p>
+                          <p>margin: {e.cnt_margin}</p>
+                          <p>quantity: {e.cnt_qty}</p>
+                          <p>turnover: {e.cnt_turnover}</p>
+                          <p>clicks: {e.number_clicks}</p>
+                          <p>product nature id: {e.product_nature_id}</p>
+                          <p>
+                            quantity of business units available:{" "}
+                            {e.qty_available_bu}
+                          </p>
+                          <p>
+                            quantity of warehouse available:{" "}
+                            {e.qty_available_wh}
+                          </p>
+                          <p>sport group id: {e.sportgroup_id}</p>
                         </div>
                       ))}
                   </div>
@@ -802,15 +808,21 @@ export default function PrestaApi(props) {
                             }}
                           >
                             <p style={{ color: "lightgray" }}>{index + 1}</p>
-                            <p>mdl_num: {e.mdl_num}</p>
-                            <p>cnt_margin: {e.cnt_margin}</p>
-                            <p>cnt_qty: {e.cnt_qty}</p>
-                            <p>cnt_turnover: {e.cnt_turnover}</p>
-                            <p>number_clicks: {e.number_clicks}</p>
-                            <p>product_nature_id: {e.product_nature_id}</p>
-                            <p>qty_available_bu: {e.qty_available_bu}</p>
-                            <p>qty_available_wh: {e.qty_available_wh}</p>
-                            <p>sportgroup_id: {e.sportgroup_id}</p>
+                            <p>modal code: {e.mdl_num}</p>
+                            <p>margin: {e.cnt_margin}</p>
+                            <p>quantity: {e.cnt_qty}</p>
+                            <p>turnover: {e.cnt_turnover}</p>
+                            <p>clicks: {e.number_clicks}</p>
+                            <p>product nature id: {e.product_nature_id}</p>
+                            <p>
+                              quantity of business units available:{" "}
+                              {e.qty_available_bu}
+                            </p>
+                            <p>
+                              quantity of warehouse available:{" "}
+                              {e.qty_available_wh}
+                            </p>
+                            <p>sport group id: {e.sportgroup_id}</p>
                           </div>
                         )
                       )}
@@ -848,7 +860,7 @@ export default function PrestaApi(props) {
                           <img src={e.image_url} style={{ width: "100px" }} />
                           <p>sport name: {e.page_en}</p>
                           <p>decathlon sport id: {e.decathlon_id}</p>
-                          <p>sumsports_clicks: {e.sumsports_clicks}</p>
+                          <p>clicks: {e.sumsports_clicks}</p>
                         </div>
                       ))}
                   </div>
@@ -882,15 +894,21 @@ export default function PrestaApi(props) {
                           }}
                         >
                           <p style={{ color: "lightgray" }}>{index + 1}</p>
-                          <p>mdl_num: {e.mdl_num}</p>
-                          <p>cnt_margin: {e.cnt_margin}</p>
-                          <p>cnt_qty: {e.cnt_qty}</p>
-                          <p>cnt_turnover: {e.cnt_turnover}</p>
-                          <p>number_clicks: {e.number_clicks}</p>
-                          <p>product_nature_id: {e.product_nature_id}</p>
-                          <p>qty_available_bu: {e.qty_available_bu}</p>
-                          <p>qty_available_wh: {e.qty_available_wh}</p>
-                          <p>sportgroup_id: {e.sportgroup_id}</p>
+                          <p>modal code: {e.mdl_num}</p>
+                          <p>margin: {e.cnt_margin}</p>
+                          <p>quantity: {e.cnt_qty}</p>
+                          <p>turnover: {e.cnt_turnover}</p>
+                          <p>clicks: {e.number_clicks}</p>
+                          <p>product nature id: {e.product_nature_id}</p>
+                          <p>
+                            quantity of business units available:{" "}
+                            {e.qty_available_bu}
+                          </p>
+                          <p>
+                            quantity of warehouse available:{" "}
+                            {e.qty_available_wh}
+                          </p>
+                          <p>sport group id: {e.sportgroup_id}</p>
                         </div>
                       ))}
                   </div>
@@ -1045,15 +1063,21 @@ export default function PrestaApi(props) {
                                 <p style={{ color: "lightgray" }}>
                                   {index + 1}
                                 </p>
-                                <p>mdl_num: {e.mdl_num}</p>
-                                <p>cnt_margin: {e.cnt_margin}</p>
-                                <p>cnt_qty: {e.cnt_qty}</p>
-                                <p>cnt_turnover: {e.cnt_turnover}</p>
-                                <p>number_clicks: {e.number_clicks}</p>
-                                <p>product_nature_id: {e.product_nature_id}</p>
-                                <p>qty_available_bu: {e.qty_available_bu}</p>
-                                <p>qty_available_wh: {e.qty_available_wh}</p>
-                                <p>sportgroup_id: {e.sportgroup_id}</p>
+                                <p>modal code: {e.mdl_num}</p>
+                                <p>margin: {e.cnt_margin}</p>
+                                <p>quantity: {e.cnt_qty}</p>
+                                <p>turnover: {e.cnt_turnover}</p>
+                                <p>clicks: {e.number_clicks}</p>
+                                <p>product nature id: {e.product_nature_id}</p>
+                                <p>
+                                  quantity of business units available:{" "}
+                                  {e.qty_available_bu}
+                                </p>
+                                <p>
+                                  quantity of warehouse available:{" "}
+                                  {e.qty_available_wh}
+                                </p>
+                                <p>sport group id: {e.sportgroup_id}</p>
                               </div>
                             )
                           )}
