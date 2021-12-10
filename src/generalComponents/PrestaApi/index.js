@@ -463,7 +463,7 @@ export default function PrestaApi(props) {
 
   const setApiKeyFunc = () => {
     if (country === "austria") {
-      setOtherCountryApiKey("b9d1001f-0cc4-4f00-acf7-e5d68377b570");
+      setOtherCountryApiKey(process.env.REACT_APP_PRESTASHOP_API_AUSTRIA);
       setOtherCountryName("austria");
     } else {
       setOtherCountryApiKey("");
