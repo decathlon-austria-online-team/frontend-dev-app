@@ -938,7 +938,7 @@ export default function PrestaApi(props) {
                       onClick={() => setToggleSportIdsList(!toggleSportIdsList)}
                     >
                       {toggleSportIdsList ? (
-                        <span>Hide</span>
+                        <span>Hide list</span>
                       ) : (
                         <span>View list of sport ID numbers</span>
                       )}
@@ -1019,7 +1019,7 @@ export default function PrestaApi(props) {
                       <TextField
                         id="standard-basic"
                         type="number"
-                        label="products limit (number )"
+                        label="products limit ( number )"
                         style={{ width: "80%" }}
                         value={mostPopularProductsLimit}
                         onChange={(e) =>
