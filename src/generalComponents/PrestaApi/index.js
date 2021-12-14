@@ -435,7 +435,7 @@ export default function PrestaApi(props) {
   //  get input states and on change func
 
   /* START PRESTA API STATES */
-  const [country, setCountry] = useState("austria");
+  const [country, setCountry] = useState("other");
   const [otherCountryName, setOtherCountryName] = useState("");
   const [otherCountryApiKey, setOtherCountryApiKey] = useState("");
   const [activeApi, setActiveApi] = useState("none");
@@ -461,7 +461,7 @@ export default function PrestaApi(props) {
   const [mostPopularProductsLimit, setMostPopularProductsLimit] = useState("");
   const [toggleSportIdsList, setToggleSportIdsList] = useState(false);
 
-  const setApiKeyFunc = () => {
+  /*const setApiKeyFunc = () => {
     if (country === "austria") {
       setOtherCountryApiKey(process.env.REACT_APP_PRESTASHOP_API_AUSTRIA);
       setOtherCountryName("austria");
@@ -472,7 +472,7 @@ export default function PrestaApi(props) {
   };
   useEffect(() => {
     setApiKeyFunc();
-  }, [country]);
+  }, [country]);*/
 
   const suggestedProductsFunc = () => {
     setActiveApi("suggested-products");
@@ -495,7 +495,7 @@ export default function PrestaApi(props) {
       })
       .catch((err) => {
         console.log(err);
-        alert("something went wrong");
+        alert("Error. Please check your country name and API key");
       });
   };
 
@@ -519,7 +519,7 @@ export default function PrestaApi(props) {
       })
       .catch((err) => {
         console.log(err);
-        alert("something went wrong");
+        alert("Error. Please check your country name and API key");
       });
   };
 
@@ -543,7 +543,7 @@ export default function PrestaApi(props) {
       })
       .catch((err) => {
         console.log(err);
-        alert("something went wrong");
+        alert("Error. Please check your country name and API key");
       });
   };
 
@@ -567,7 +567,7 @@ export default function PrestaApi(props) {
       })
       .catch((err) => {
         console.log(err);
-        alert("something went wrong");
+        alert("Error. Please check your country name and API key");
       });
   };
 
@@ -591,7 +591,7 @@ export default function PrestaApi(props) {
       })
       .catch((err) => {
         console.log(err);
-        alert("something went wrong");
+        alert("Error. Please check your country name and API key");
       });
   };
 
@@ -618,9 +618,11 @@ export default function PrestaApi(props) {
             <p id="transition-modal-description">{props.text}</p>
             <div className="popupInputsContainer">
               <div className="popupInputsContainer__wrapper">
+                {/*
                 <p className="popupInputsContainer__titleOfInputsGroup">
                   please choose a country
                 </p>
+                
                 <FormControl component="fieldset">
                   <FormLabel component="legend"></FormLabel>
 
@@ -642,6 +644,7 @@ export default function PrestaApi(props) {
                     />
                   </RadioGroup>
                 </FormControl>
+                */}
                 <div>
                   {country === "other" ? (
                     <div>
@@ -658,7 +661,7 @@ export default function PrestaApi(props) {
                       />
                       <TextField
                         id="standard-basic"
-                        label="country api key"
+                        label="country API key"
                         style={{ width: "80%" }}
                         value={otherCountryApiKey}
                         onChange={(e) => setOtherCountryApiKey(e.target.value)}
