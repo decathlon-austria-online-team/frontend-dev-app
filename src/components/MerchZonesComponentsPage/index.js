@@ -26,9 +26,11 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 // import images
 import screenshotSimilarCategories from "../../img/similar-categories-screenshots.png";
+import screenshotContent from "../../img/screenshop-merch-zone-content.PNG";
 
 // import popups components
 import SimilarCategories from "../../generalComponents/SimilarCategories";
+import Content from "../../merchZoneComponents/Content";
 
 const useStylesImgList = makeStyles((theme) => ({
   root: {
@@ -59,12 +61,19 @@ const MerchZonesComponentsPage = (props) => {
       type: "top merch zone",
       onclick: () => setOpenSimilarCategories(true),
     },
+    {
+      img: screenshotContent,
+      title: "Content",
+      type: "footer merch zone",
+      onclick: () => setOpenContent(true),
+    },
   ]);
 
   const [getMainCode, setGetMainCode] = useState("");
 
   // open/close popup states
   const [openSimilarCategories, setOpenSimilarCategories] = useState(false);
+  const [openContent, setOpenContent] = useState(false);
 
   // GENERAL STATES:
   const [codeEditorModeFull, setCodeEditorModeFull] = useState(false);
@@ -200,6 +209,12 @@ const MerchZonesComponentsPage = (props) => {
           imgUrl={screenshotSimilarCategories}
           open={openSimilarCategories}
           handleClose={() => setOpenSimilarCategories(false)}
+          userDataObjFromSheet={props.userDataObjFromSheet}
+        />
+        <Content
+          imgUrl={screenshotContent}
+          open={openContent}
+          handleClose={() => setOpenContent(false)}
           userDataObjFromSheet={props.userDataObjFromSheet}
         />
       </div>

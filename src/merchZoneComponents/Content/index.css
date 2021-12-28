@@ -1,0 +1,17 @@
+.merch-zone-content__copy-code-btn {
+  cursor: pointer;
+}
+
+.merch-zone-content__canva-img {
+  display: block;
+  width: 260px;
+  float: right;
+  border: 1px solid #eee;
+}
+
+.merch-zone-content__step-title {
+  text-transform: uppercase;
+  background-color: yellow;
+  font-weight: bold;
+  padding: 10px;
+}
