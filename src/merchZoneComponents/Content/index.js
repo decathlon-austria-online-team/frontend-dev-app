@@ -10,7 +10,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import Button from "@material-ui/core/Button";
 import DoneIcon from "@material-ui/icons/Done";
 
 import copy from "copy-to-clipboard";
@@ -364,6 +363,7 @@ href="https://decathlon-source.eu/frontend/content-pages/code-files/products
           e.iconType === "dot"
             ? `
           <li class="merch-zone-footer-content__ul-list-item">
+          <div>
             <svg
               class="merch-zone-footer-content__ul-list-icon-dot"
               xmlns="http://www.w3.org/2000/svg"
@@ -379,12 +379,14 @@ href="https://decathlon-source.eu/frontend/content-pages/code-files/products
                 <path d="M12 15a3 3 0 1 1 0-6a3 3 0 0 1 0 6z" fill="currentColor" />
               </g>
             </svg>
+            </div>
             <span>${e.text}</span>
           </li>
           `
             : e.iconType === "check"
             ? `
               <li class="merch-zone-footer-content__ul-list-item">
+                <div>
                   <svg
                     class="merch-zone-footer-content__ul-list-icon-check"
                     xmlns="http://www.w3.org/2000/svg"
@@ -402,6 +404,7 @@ href="https://decathlon-source.eu/frontend/content-pages/code-files/products
                       />
                     </g>
                   </svg>
+                  </div>
                   <span
                     >${e.text}</span
                   >
@@ -410,6 +413,7 @@ href="https://decathlon-source.eu/frontend/content-pages/code-files/products
             : e.iconType === "x"
             ? `
               <li class="merch-zone-footer-content__ul-list-item">
+              <div>
                 <svg
                   class="merch-zone-footer-content__ul-list-icon-x"
                   aria-hidden="true"
@@ -426,6 +430,7 @@ href="https://decathlon-source.eu/frontend/content-pages/code-files/products
                     />
                   </g>
                 </svg>
+                </div>
                 <span>${e.text}</span>
             </li>
               `
