@@ -29,10 +29,12 @@ import screenshotSimilarCategories from "../../img/similar-categories-screenshot
 import screenshotGroupModalCodes from "../../img/group-modal-codes-component.PNG";
 import screenshotPrestashopApi from "../../img/prestashop-api.PNG";
 import screenshotPrestashopApiV2 from "../../img/prestashop-api-v2.png";
+import screenshotDecaStories from "../../img/decastories-screenshot.PNG";
 
 // import popups components
 import GroupModalCodes from "../../generalComponents/GroupModalCodes";
 import PrestaApi from "../../generalComponents/PrestaApi";
+import DecaStories from "../../generalComponents/DecaStories";
 
 const useStylesImgList = makeStyles((theme) => ({
   root: {
@@ -69,7 +71,26 @@ const GeneralComponentsPage = (props) => {
       type: "general component",
       onclick: () => setOpenPrestaApi(true),
     },
+    /*{
+      img: screenshotDecaStories,
+      title: "DecaStories",
+      type: "general component",
+      onclick: () => setOpenDecaStories(true),
+    },*/
   ]);
+
+  useEffect(() => {
+    if (props.userDataObjFromSheet.country === "Austria") {
+      let copyOfOriginlState = [...imgData];
+      copyOfOriginlState.push({
+        img: screenshotDecaStories,
+        title: "DecaStories",
+        type: "general component",
+        onclick: () => setOpenDecaStories(true),
+      });
+      setImgData(copyOfOriginlState);
+    }
+  }, []);
 
   const [getMainCode, setGetMainCode] = useState("");
 
@@ -77,6 +98,7 @@ const GeneralComponentsPage = (props) => {
 
   const [openGroupModalCode, setOpenGroupModelCode] = useState(false);
   const [openPrestaApi, setOpenPrestaApi] = useState(false);
+  const [openDecaStories, setOpenDecaStories] = useState(false);
 
   // GENERAL STATES:
   const [codeEditorModeFull, setCodeEditorModeFull] = useState(false);
@@ -96,6 +118,7 @@ const GeneralComponentsPage = (props) => {
     // console.log('getMainCode: ', getMainCode);
   }, [getMainCode]);
   // console.log('sportl3 userDataObjFromSheet: ', props.userDataObjFromSheet);
+
   return (
     <div className="sportLPV3 page">
       <Typography variant="h3" component="h2" gutterBottom className="title">
@@ -218,6 +241,12 @@ const GeneralComponentsPage = (props) => {
           imgUrl={screenshotPrestashopApiV2}
           open={openPrestaApi}
           handleClose={() => setOpenPrestaApi(false)}
+          userDataObjFromSheet={props.userDataObjFromSheet}
+        />
+        <DecaStories
+          imgUrl={screenshotDecaStories}
+          open={openDecaStories}
+          handleClose={() => setOpenDecaStories(false)}
           userDataObjFromSheet={props.userDataObjFromSheet}
         />
       </div>

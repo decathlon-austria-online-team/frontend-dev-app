@@ -1,0 +1,178 @@
+.decastories__view-story-section:not(:last-child) {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
+}
+
+.decastories_view-story-btns {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+/* start preview story styles */
+.decastories__preview-story--story-container {
+  height: 97%;
+  width: 97%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  box-shadow: -1px 3px 17px 2px rgba(0, 0, 0, 0.48);
+  position: fixed;
+  top: 48%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 3000000000;
+  overflow: hidden;
+  text-align: center;
+}
+
+.decastories__preview-story--close-story-icon {
+  color: lightgray;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 9px;
+}
+
+.decastories__preview-story--template-1-container {
+  height: 88%;
+  max-height: 1000px;
+  width: 88%;
+  max-width: 700px;
+  position: absolute;
+  top: 53%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  background-size: cover;
+  background-position: center;
+  padding: 10px;
+}
+
+.decastories__preview-story--template-1-main-title {
+  display: block;
+  text-align: center;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 29px;
+}
+
+.decastories__preview-story--template-1-subtitle {
+  margin-top: 16px;
+  display: block;
+  text-align: center;
+  font-size: 17px;
+}
+
+.decastories__preview-story--template-1-cta-btn {
+  position: absolute;
+  bottom: 40px;
+  right: 50%;
+  transform: translate(50%, -50%);
+  z-index: 100;
+  padding: 14px 24px;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* end preview story styles */
+
+/* start editing area styles */
+.decastories__edit-area {
+  padding: 10px;
+  background-color: #eee;
+  margin: 10px 0;
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  z-index: 100000000;
+  width: 70%;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.decastories__edit-close-icon {
+  color: #000;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  cursor: pointer;
+}
+
+.decastories__edit-area--story-details {
+  margin-bottom: 32px;
+  color: gray;
+  font-size: 10px;
+}
+
+.decastories__edit-area--input {
+  margin: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.decastories__edit-area--input input {
+  width: 80%;
+}
+
+.decastories__edit-area--input-radio {
+  justify-content: flex-start;
+}
+
+.decastories__edit-area--input-radio span {
+  margin-right: 70px;
+}
+
+.decastories__edit-area--input-radio div {
+  margin-right: 20px;
+}
+
+.decastories__edit-area--input-radio input {
+  width: auto !important;
+  margin-right: 4px;
+}
+
+.decastories__edit-area--update-btn {
+  margin: 20px 0;
+}
+
+.decastories__edit-area--update-btn button {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+/* end editing area end */
+
+/* start delete message area styles */
+.decastories__delete-area {
+  padding: 10px;
+  background-color: #eee;
+  margin: 10px 0;
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  z-index: 100000000;
+  width: 40%;
+  max-height: 500px;
+  overflow: auto;
+}
+.decastories__delete-area button {
+  padding: 3px 6px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  margin: 2px;
+}
+/* end delete message area styles */

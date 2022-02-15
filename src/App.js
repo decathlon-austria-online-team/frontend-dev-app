@@ -79,7 +79,7 @@ function App() {
       }
     }
   };
-  console.log("user has all data: ", userHasAllDataInSheetBool);
+
   useEffect(() => {
     checkIfUserInUsersCollection();
   }, [usersDataFromSheet]);
