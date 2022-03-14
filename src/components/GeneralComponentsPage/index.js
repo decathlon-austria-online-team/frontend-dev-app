@@ -30,11 +30,13 @@ import screenshotGroupModalCodes from "../../img/group-modal-codes-component.PNG
 import screenshotPrestashopApi from "../../img/prestashop-api.PNG";
 import screenshotPrestashopApiV2 from "../../img/prestashop-api-v2.png";
 import screenshotDecaStories from "../../img/decastories-screenshot.PNG";
+import screenshotPromiseDeliveryMessage from "../../img/screenshot_promise_delivery_message.PNG";
 
 // import popups components
 import GroupModalCodes from "../../generalComponents/GroupModalCodes";
 import PrestaApi from "../../generalComponents/PrestaApi";
 import DecaStories from "../../generalComponents/DecaStories";
+import PromiseDeliveryMessage from "../../generalComponents/PromiseDeliveryMessage";
 
 const useStylesImgList = makeStyles((theme) => ({
   root: {
@@ -71,12 +73,12 @@ const GeneralComponentsPage = (props) => {
       type: "general component",
       onclick: () => setOpenPrestaApi(true),
     },
-    /*{
-      img: screenshotDecaStories,
-      title: "DecaStories",
-      type: "general component",
-      onclick: () => setOpenDecaStories(true),
-    },*/
+    {
+      img: screenshotPromiseDeliveryMessage,
+      title: "Promise delivery message",
+      type: "product pages",
+      onclick: () => setOpenPromiseDeliveryMessage(true),
+    },
   ]);
 
   useEffect(() => {
@@ -99,6 +101,8 @@ const GeneralComponentsPage = (props) => {
   const [openGroupModalCode, setOpenGroupModelCode] = useState(false);
   const [openPrestaApi, setOpenPrestaApi] = useState(false);
   const [openDecaStories, setOpenDecaStories] = useState(false);
+  const [openPromiseDeliveryMessage, setOpenPromiseDeliveryMessage] =
+    useState(false);
 
   // GENERAL STATES:
   const [codeEditorModeFull, setCodeEditorModeFull] = useState(false);
@@ -132,7 +136,7 @@ const GeneralComponentsPage = (props) => {
         >
           <div
             className="sportLPV3__content-title"
-            style={{ marginBottom: "10px" }}
+            // style={{ marginBottom: "10px" }}
             style={
               codeEditorModeFull
                 ? { display: "none" }
@@ -247,6 +251,12 @@ const GeneralComponentsPage = (props) => {
           imgUrl={screenshotDecaStories}
           open={openDecaStories}
           handleClose={() => setOpenDecaStories(false)}
+          userDataObjFromSheet={props.userDataObjFromSheet}
+        />
+        <PromiseDeliveryMessage
+          imgUrl={screenshotPromiseDeliveryMessage}
+          open={openPromiseDeliveryMessage}
+          handleClose={() => setOpenPromiseDeliveryMessage(false)}
           userDataObjFromSheet={props.userDataObjFromSheet}
         />
       </div>

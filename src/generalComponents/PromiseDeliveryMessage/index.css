@@ -1,0 +1,28 @@
+.promise-delivery-message__section {
+  /*border-top: 1px solid #eee;*/
+  /*border-bottom: 1px solid #eee;*/
+  padding: 10px 4px;
+  margin: 20px 0 60px 0;
+}
+
+.promise-delivery-message__section-title {
+  text-transform: uppercase;
+  background-color: #0082c3;
+  color: #fff;
+  display: inline-block;
+  padding: 2px 4px;
+}
+
+.promise-delivery-message__text {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.promise-delivery-message__text p {
+  color: gray;
+}
+.promise-delivery-message__text p span {
+  color: #000;
+}
+.promise-delivery-message__btn {
+  width: 35%;
+}

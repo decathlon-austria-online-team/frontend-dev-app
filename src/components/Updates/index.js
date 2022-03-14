@@ -34,6 +34,10 @@ function createData(update, date) {
 }
 
 const rows = [
+  createData(
+    "promise delivery + click and collect messages on product pages - general",
+    "14.03.2022"
+  ),
   createData("content page - merchandasing zones", "28.12.2021"),
   createData("prestashop api live data - general", "10.12.2021"),
   createData("group modal codes under supermodal code - general", "18.11.2021"),
